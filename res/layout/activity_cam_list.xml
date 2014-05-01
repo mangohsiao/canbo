@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/head_bkground" >
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="match_parent" >
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:textSize="22sp"
+                android:textColor="@color/canbo_color_green_01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="监控列表" />
+            
+        </LinearLayout>
+        
+        
+        <LinearLayout
+            android:layout_width="70dp"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+
+            <Button
+                android:id="@+id/btn_cam_list_add"
+                android:background="@drawable/selector_btn_add_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="添加" />
+            
+        </LinearLayout>
+        
+    </LinearLayout>	<!-- end of head -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RadioGroup
+            android:id="@+id/radiogroup_cam_list"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+        <ListView
+            android:id="@+id/listview_cam_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </ListView>
+		</RadioGroup>
+    </LinearLayout>
+
+</LinearLayout>

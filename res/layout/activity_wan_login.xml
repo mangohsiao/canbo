@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+	    <ImageView
+	        android:id="@+id/img_wan_log_canbo"
+	        android:layout_width="80dp"
+	        android:layout_height="30dp"
+	        android:src="@drawable/canbo_big_logo" />
+	    <LinearLayout
+	        android:layout_marginTop="10dp"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical" >
+	        
+		    <TextView
+		        android:id="@+id/txv_wan_login"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="center_horizontal"
+		        android:text=" " />
+	
+		    <ImageView
+		        android:id="@+id/img_wan_log_icon"
+		        android:layout_width="match_parent"
+		        android:layout_height="100dp"
+		        android:src="@drawable/low_signal" />
+		    
+		</LinearLayout>
+	
+	    <LinearLayout
+	        android:layout_marginTop="20dp"
+	        android:layout_marginLeft="10dp"
+	        android:layout_marginRight="10dp"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:id="@+id/txv_wan_log_account"
+	            android:layout_width="80dp"
+	            android:layout_height="wrap_content"
+	            android:text="账号"
+	            android:textSize="18dp" />
+	
+	        <EditText
+	            android:id="@+id/edtx_wan_log_account"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:ems="10" >
+	
+	            <requestFocus />
+	        </EditText>
+	    </LinearLayout>
+	
+	    <LinearLayout
+	        android:layout_marginLeft="10dp"
+	        android:layout_marginRight="10dp"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	
+	        <TextView
+	            android:id="@+id/txv_wan_log_pswd"
+	            android:layout_width="80dp"
+	            android:layout_height="wrap_content"
+	            android:text="密码"
+	            android:textSize="18dp" />
+	
+	        <EditText
+	            android:id="@+id/edtx_wan_log_pswd"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_weight="1"
+	            android:ems="10"
+	            android:inputType="textPassword" />
+	    </LinearLayout>
+	
+	    <LinearLayout
+	        android:layout_marginTop="30dp"
+	        android:layout_marginLeft="10dp"
+	        android:layout_marginRight="10dp"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="vertical" >
+	
+	        <LinearLayout
+	            android:layout_gravity="center_horizontal"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:orientation="horizontal">
+	            
+		        <CheckBox
+		            android:id="@+id/checkBox1"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="记住账号" />
+		        
+		        <CheckBox
+		            android:id="@+id/checkBox3"
+		            android:layout_marginLeft="30dp"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="记住密码" />
+	            
+	        </LinearLayout>
+	
+	
+	    </LinearLayout>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="right"
+        android:gravity="center_horizontal" >
+        
+	    <Button
+	        android:id="@+id/btn_wan_login_back"
+	        android:layout_marginLeft="10dp"
+	        android:layout_width="match_parent"
+	        android:layout_weight="2"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/opt_item_button_selector"
+	        android:text="返回" />
+        
+	    <Button
+	        android:id="@+id/btn_wan_login_yes"
+	        android:layout_marginLeft="10dp"
+	        android:layout_marginRight="10dp"
+	        android:layout_width="match_parent"
+	        android:layout_weight="2"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/opt_item_button_selector"
+	        android:text="确定" />
+	    
+    </LinearLayout>
+
+
+</LinearLayout>

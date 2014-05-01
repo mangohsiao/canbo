@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="6dp"
+    android:background="@drawable/opt_item_button_normal"
+    android:orientation="vertical" >
+    
+	
+    <LinearLayout 
+        android:gravity="center_vertical"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal" >
+	    <ImageView
+	        android:id="@+id/op_1_imgv"
+	        android:layout_marginLeft="10dp"
+	        android:layout_marginRight="10dp"
+	        android:layout_width="38dp"
+	        android:layout_height="38dp"
+	        android:src="@drawable/opt1_img_power_green" />
+	    
+		<ToggleButton
+			android:id="@+id/op_1_btn"
+			android:textColor="#000000"
+			android:background="@drawable/opt_toggle_button_selector"
+			android:layout_gravity="right|center_vertical"
+			android:layout_marginRight="8dp"
+			android:layout_width="match_parent"
+			android:layout_height="60dp" />	
+			
+	</LinearLayout>
+        
+</LinearLayout>

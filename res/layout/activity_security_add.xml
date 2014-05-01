@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/head"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/head_bkground" >
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="match_parent" >
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="vertical" >
+            <TextView
+                android:id="@+id/textView1"
+                android:textSize="22sp"
+                android:textColor="@color/canbo_color_green_01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="添加布防设备" />            
+        </LinearLayout>
+        
+        
+        <LinearLayout
+            android:layout_width="70dp"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+            
+        </LinearLayout>
+        
+    </LinearLayout>	<!-- end of head -->
+	
+    <LinearLayout
+        android:id="@+id/securityadd_line_btn_holder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+	    <Button
+	        android:id="@+id/securityadd_btn_cancel"
+	        android:layout_weight="1"
+	        android:layout_marginLeft="8dp"
+	        android:layout_marginRight="2dp"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:text="取消" />        
+	    <Button
+	        android:id="@+id/securityadd_btn_ok"
+	        android:layout_weight="1"
+	        android:layout_marginLeft="2dp"
+	        android:layout_marginRight="8dp"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:text="添加" />        
+    </LinearLayout>
+    
+    <ListView
+        android:id="@+id/securityadd_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/securityadd_line_btn_holder"
+        android:layout_below="@id/head" >
+    </ListView>
+
+</RelativeLayout>

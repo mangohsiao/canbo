@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout 
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        
+	    <TextView
+	        android:id="@+id/textView1"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_horizontal"
+	        android:text=" "
+	        android:textAppearance="?android:attr/textAppearanceLarge" />
+	        	    
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="253dp"
+            android:layout_height="100dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/canbo_big_logo" />
+     
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/canbo_text" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical" >
+
+	        <Button
+	            android:id="@+id/btn_main_menu_rom"
+	            android:layout_marginLeft="20dp"
+	            android:layout_marginRight="20dp"            
+	            android:layout_marginTop="10dp"
+	            android:layout_width="280dp"
+	            android:layout_height="50dp"
+	            android:textColor="#00727a"
+	            android:textSize="24sp"
+	            android:background="@drawable/opt_item_button_selector"
+	            android:text="查看房间" />
+	
+	        <Button
+	            android:id="@+id/btn_main_menu_dev"
+	            android:layout_marginLeft="20dp"
+	            android:layout_marginRight="20dp"            
+	            android:layout_marginTop="10dp"
+	            android:layout_width="280dp"
+	            android:layout_height="50dp"
+	            android:textColor="#00727a"
+	            android:textSize="24sp"
+	            android:background="@drawable/opt_item_button_selector"
+	            android:text="查看设备" />
+	
+	        <Button
+	            android:id="@+id/btn_main_menu_mode"
+	            android:layout_marginLeft="20dp"
+	            android:layout_marginRight="20dp"            
+	            android:layout_marginTop="10dp"
+	            android:layout_width="280dp"
+	            android:layout_height="50dp"
+	            android:background="@drawable/opt_item_button_selector"
+	            android:textColor="#00727a"
+	            android:textSize="24sp"
+	            android:text="情景模式" />
+	
+	        <Button
+	            android:id="@+id/btn_main_menu_security"
+	            android:layout_marginLeft="20dp"
+	            android:layout_marginRight="20dp"            
+	            android:layout_marginTop="10dp"
+	            android:layout_width="280dp"
+	            android:layout_height="50dp"
+	            android:background="@drawable/opt_item_button_selector"
+	            android:textColor="#00727a"
+	            android:textSize="24sp"
+	            android:text="安全防护" />
+	        
+	        <Button
+	            android:id="@+id/btn_main_menu_monitor"
+	            android:layout_marginLeft="20dp"
+	            android:layout_marginRight="20dp"            
+	            android:layout_marginTop="10dp"
+	            android:layout_width="280dp"
+	            android:layout_height="50dp"
+	            android:background="@drawable/opt_item_button_selector"
+	            android:textColor="#00727a"
+	            android:textSize="24sp"
+	            android:text="视频监控" />
+            
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

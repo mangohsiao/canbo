@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.emos.canbo"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="7"
+        android:targetSdkVersion="10" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+
+    <application
+        android:name="MyApp"
+        android:allowBackup="true"
+        android:icon="@drawable/ic_launcher_2"
+        android:theme="@style/AppTheme"
+        >
+        
+<!--         
+android:theme="@style/AppTheme"
+android:theme="@style/ThemeActivity"
+-->
+        
+        <activity
+            android:name="com.emos.canbo.Splash"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        
+        <!-- 登录 -->
+        <activity  android:name="com.emos.canbo.user.LoginActivity"
+            android:windowSoftInputMode="adjustResize"
+            android:launchMode="singleTask"></activity>      
+            
+        <!-- 登录方式选择 -->
+        <activity  android:name="com.emos.canbo.ConnectChooseActivity"></activity>
+        
+        <!-- 内网登录 -->
+        <activity  android:name="com.emos.canbo.LanLoginActivity"></activity>
+        
+        <!-- 外网登录 -->
+        <activity  android:name="com.emos.canbo.WanLoginActivity"></activity>
+        
+        <!-- 主菜单,选择设备查看,情景模式等 -->
+        <activity  android:name="com.emos.canbo.MainMenuActivity"
+            android:launchMode="singleTask"></activity>
+        
+        <!-- 按房间查看 -->        
+        <activity  android:name="com.emos.canbo.RoomSightActivity"></activity>        
+        <activity  android:name="com.emos.canbo.DevListOfRomActivity"></activity>
+        
+        <!-- 按设备查看 -->      
+        <activity  android:name="com.emos.canbo.DeviceSightActivity"></activity>
+        
+        <!-- 操作列表 -->  
+        <activity  android:name="com.emos.canbo.OptListActivity"></activity>
+        
+        <!-- 情景模式 --> 
+        <activity  android:name="com.emos.canbo.ModeSightActivity"></activity>
+        
+        <!-- 设置 -->
+        <activity  android:name="com.emos.canbo.SettingsActivity"></activity>  
+        <activity android:name="com.emos.canbo.SettingInput"></activity>     
+        <!-- 设置 -->
+        <activity  android:name="com.emos.canbo.SettingActivity2"
+            android:launchMode="singleTask"></activity>      
+        
+        <!-- 杂的 -->
+        <activity  android:name="com.emos.canbo.LoginActivity"></activity>   
+        <activity  android:name="com.emos.canbo._DeviceOptViewActivity"></activity>
+              
+        <!-- 监控 -->
+        <activity  android:name="com.emos.canbo.monitor.MonitorActivity"></activity>
+        
+        <!-- cam_list -->
+        <activity  android:name="com.emos.canbo.monitor.CamListActivity"></activity>
+        <!-- addcam -->
+        <activity  android:name="com.emos.canbo.monitor.AddCamActivity"></activity>
+        <!-- edit cam -->
+        <activity  android:name="com.emos.canbo.monitor.CamEditActivity"></activity>
+        <!-- preset delete -->
+        <activity  android:name="com.emos.canbo.monitor.PresetDeleteActivity"></activity>
+        <!-- security -->
+        <activity  
+            android:name="com.emos.canbo.security.SecurityActivity"
+            android:launchMode="singleTask"
+            ></activity>
+        <!-- security2 -->
+        <activity  
+            android:name="com.emos.canbo.security.SecurityActivity2"
+            android:launchMode="singleTask"
+            ></activity>
+        <!-- security2 -->
+        <activity  
+            android:name="com.emos.canbo.security.SecurityAddDeployActivity"
+            android:launchMode="singleTask"
+            ></activity>
+        
+        <!-- security settings -->
+        <activity  
+            android:name="com.emos.canbo.security.SecuritySettingActivity"
+            android:launchMode="singleTask"
+            ></activity>
+        
+        <!-- security service -->
+        <service android:name="com.emos.canbo.security.LocalService"></service>
+        
+        <!-- auto boot receiver
+        <receiver android:name="com.emos.utils.DelayBootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"></action>
+            </intent-filter>
+        </receiver>
+        -->
+        
+        <!-- test -->
+        <activity  android:name="com.test.TestActivity"></activity>
+        
+    </application>
+
+</manifest>

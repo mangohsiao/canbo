@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <ImageView
+            android:id="@+id/img_logo"
+            android:layout_width="match_parent"
+            android:layout_height="60dip"
+            android:layout_marginTop="114dp"
+            android:src="@drawable/canbo_big_logo" />
+
+        <ImageView
+            android:id="@+id/img_logo_text"
+            android:layout_width="match_parent"
+            android:layout_height="40dip"
+            android:layout_marginTop="15dip"
+            android:layout_below="@+id/img_logo"
+            android:src="@drawable/canbo_text" />
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dip"
+            android:gravity="center"
+            android:layout_below="@+id/img_logo_text"
+            android:textColor="#00727a"
+            android:text="@string/splash_name"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:gravity="center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:textColor="#00727a"
+            android:layout_marginBottom="5dip"
+            android:text="@string/splash_bottom" />
+
+</RelativeLayout>

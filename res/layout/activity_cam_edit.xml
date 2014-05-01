@@ -1,0 +1,384 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- start of head -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/head_bkground" >
+
+        <LinearLayout
+            android:layout_width="70dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_height="match_parent" >
+
+            <Button
+                android:id="@+id/cam_edit_btn_cancel"
+                android:background="@drawable/opt_item_button_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="取消" />
+
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:textSize="22sp"
+                android:textColor="@color/canbo_color_green_01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="监控列表" />
+            
+        </LinearLayout>
+        
+        <LinearLayout
+            android:id="@+id/cam_edit_line_delete"
+            android:layout_width="70dp"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/opt_item_button_selector"
+            android:gravity="center_vertical"
+            android:orientation="horizontal" >
+
+            <LinearLayout 
+                android:layout_weight="0.6"
+                android:background="@drawable/selector_delete_icon"
+                android:layout_height="wrap_content"
+                android:layout_width="0dp"></LinearLayout>
+            <TextView
+                android:layout_weight="1.0"
+                android:textSize="18sp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="删除" />
+            
+        </LinearLayout>
+        
+    </LinearLayout>
+    <!-- end of head -->
+    
+	<ScrollView
+	    android:layout_marginLeft="10dp"
+	    android:layout_marginRight="10dp"
+	    android:layout_weight="1.0"
+	    android:layout_width="match_parent"
+	    android:layout_height="0dp" >
+	    <LinearLayout 
+	        android:orientation="vertical"
+	        android:layout_height="wrap_content"
+	        android:layout_width="match_parent">
+    
+   	<!-- start of content -->
+   	
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >
+	    
+		<LinearLayout 
+		    android:layout_marginTop="8dp"
+		    android:minHeight="30dp"
+		    android:gravity="center_vertical"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical" >	
+	        <TextView
+	            android:textSize="14sp"
+	            android:textColor="#888888"
+	            android:layout_marginLeft="8dp"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="监控点名字" />
+        </LinearLayout>
+	    
+	    <LinearLayout
+	        android:background="@null"
+	        android:minHeight="50dp"
+	        android:clickable="true"
+	        android:gravity="center_vertical"
+	        android:id="@+id/cam_edit_linearlayout_cam_name"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal" >
+	
+	        <EditText
+	            android:id="@+id/cam_edit_edtx_cam_name"
+	            android:background="@drawable/edtx_input_bg_selector"
+	            android:textSize="18sp"
+	            android:paddingLeft="8dp"
+	            android:paddingRight="8dp"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:text="SCUT.CAM" />
+	    </LinearLayout>
+	</LinearLayout>
+    
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >
+	    
+		<LinearLayout 
+		    android:layout_marginTop="8dp"
+		    android:minHeight="30dp"
+		    android:gravity="center_vertical"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical" >	
+	        <TextView
+	            android:textSize="14sp"
+	            android:textColor="#888888"
+	            android:layout_marginLeft="8dp"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="IP地址" />
+        </LinearLayout>
+	    
+	   <LinearLayout
+	        android:minHeight="50dp"
+	        android:clickable="true"
+	        android:gravity="center_vertical"
+	        android:id="@+id/cam_edit_linearlayout_cam_ip"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal" >
+	
+	        <EditText
+	            android:id="@+id/cam_edit_edtx_cam_ip"
+	            android:background="@drawable/edtx_input_bg_selector"
+	            android:textSize="18sp"
+	            android:paddingLeft="8dp"
+	            android:paddingRight="8dp"
+	            android:digits="1234567890.qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM-"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:text="222.222.222.222" />
+	
+	
+	    </LinearLayout>
+	</LinearLayout>
+    
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >
+	    
+		<LinearLayout 
+		    android:layout_marginTop="8dp"
+		    android:minHeight="30dp"
+		    android:gravity="center_vertical"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical" >	
+	        <TextView
+	            android:textSize="14sp"
+	            android:textColor="#888888"
+	            android:layout_marginLeft="8dp"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="端口" />
+        </LinearLayout>
+	    
+	    <LinearLayout
+	        android:minHeight="50dp"
+	        android:clickable="true"
+	        android:gravity="center_vertical"
+	        android:id="@+id/cam_edit_linearlayout_cam_port"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal" >
+	
+	        <EditText
+	            android:id="@+id/cam_edit_edtx_cam_port"
+	            android:background="@drawable/edtx_input_bg_selector"
+	            android:textSize="18sp"
+	            android:paddingLeft="8dp"
+	            android:paddingRight="8dp"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:inputType="number"
+	            android:digits="1234567890"
+	            android:text="8000" />	
+	    </LinearLayout>
+	</LinearLayout>
+    
+	<LinearLayout 
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >
+	    
+		<LinearLayout 
+		    android:layout_marginTop="8dp"
+		    android:minHeight="30dp"
+		    android:gravity="center_vertical"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical" >	
+	        <TextView
+	            android:textSize="14sp"
+	            android:textColor="#888888"
+	            android:layout_marginLeft="8dp"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="通道" />
+        </LinearLayout>
+	    
+	    <LinearLayout
+	        android:minHeight="50dp"
+	        android:clickable="true"
+	        android:gravity="center_vertical"
+	        android:id="@+id/cam_edit_linearlayout_cam_channel"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal" >
+	
+	        <EditText
+	            android:id="@+id/cam_edit_edtx_cam_channel"
+	            android:background="@drawable/edtx_input_bg_selector"
+	            android:textSize="18sp"
+	            android:paddingLeft="8dp"
+	            android:paddingRight="8dp"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:inputType="number"
+	            android:digits="1234567890"
+	            android:text="1" />
+	    </LinearLayout>
+	</LinearLayout>
+    
+	<LinearLayout 
+        android:visibility="gone"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >
+	    
+		<LinearLayout 
+		    android:layout_marginTop="8dp"
+		    android:minHeight="30dp"
+		    android:gravity="center_vertical"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical" >	
+	        <TextView
+	            android:textSize="14sp"
+	            android:textColor="#888888"
+	            android:layout_marginLeft="8dp"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="用户名" />
+        </LinearLayout>
+	    
+	    <LinearLayout
+	        android:minHeight="50dp"
+	        android:clickable="true"
+	        android:gravity="center_vertical"
+	        android:id="@+id/cam_edit_linearlayout_cam_username"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal" >
+	
+	        <EditText
+	            android:id="@+id/cam_edit_edtx_cam_username"
+	            android:background="@drawable/edtx_input_bg_selector"
+	            android:textSize="18sp"
+	            android:paddingLeft="8dp"
+	            android:paddingRight="8dp"
+	            android:layout_width="match_parent"
+	            android:layout_height="match_parent"
+	            android:text="admin" />
+ 		</LinearLayout>
+	</LinearLayout>
+    
+	<LinearLayout 
+        android:visibility="gone"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >
+	    
+		<LinearLayout 
+		    android:layout_marginTop="8dp"
+		    android:minHeight="30dp"
+		    android:gravity="center_vertical"
+		    android:layout_width="match_parent"
+		    android:layout_height="wrap_content"
+		    android:orientation="vertical" >	
+	        <TextView
+	            android:textSize="14sp"
+	            android:textColor="#888888"
+	            android:layout_marginLeft="8dp"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="密码" />
+        </LinearLayout>
+	    
+	    <LinearLayout
+	        android:minHeight="50dp"
+	        android:clickable="true"
+	        android:background="@drawable/opt_item_button_selector"
+	        android:gravity="center_vertical"
+	        android:id="@+id/cam_edit_linearlayout_cam_pswd"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:orientation="horizontal" >
+	
+	        <TextView
+	            android:layout_weight="1.0"
+	            android:textSize="18sp"
+	            android:layout_marginLeft="8dp"
+	            android:id="@+id/cam_edit_txv_cam_pswd"
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:text="修改" />
+	
+	        <LinearLayout
+	            android:layout_marginRight="8dp"
+	            android:background="@drawable/jiantou_2"
+	            android:layout_width="15dp"
+	            android:layout_height="15dp"
+	            android:orientation="vertical" >
+	        </LinearLayout>
+	
+	    </LinearLayout>
+	</LinearLayout>
+	
+   	<!-- end of content -->
+
+	    </LinearLayout>
+	</ScrollView>
+    
+    <!-- bottom -->
+
+   	<LinearLayout
+   	    android:id="@+id/cam_edit_linearlayout_save"
+   	    android:layout_width="match_parent"
+   	    android:layout_height="50dp"
+   	    android:layout_margin="3dp"
+   	    android:background="@drawable/selector_save_btn_green"
+   	    android:clickable="true"
+   	    android:gravity="center"
+   	    android:orientation="vertical" >
+
+   		<TextView
+   		    android:id="@+id/textView1"
+   		    android:textColor="#ffffff"
+   		    android:textSize="20sp"
+   		    android:layout_width="wrap_content"
+   		    android:layout_height="wrap_content"
+   		    android:text="保存修改" />
+
+    </LinearLayout>
+    <!-- bottom -->
+
+</LinearLayout>

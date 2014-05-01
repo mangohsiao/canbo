@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#fcfcfd"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <LinearLayout
+        android:gravity="center"
+    	android:background="@drawable/head_bkground"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" >
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_marginTop="8dp"
+        android:paddingLeft="1dp"
+        android:paddingRight="1dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+        
+	    <TextView
+	        android:id="@+id/textView1"
+	        android:layout_marginLeft="20dp"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="#858586"
+	        android:text="连接设置"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+	    
+        <LinearLayout
+            android:clickable="true"
+            android:id="@+id/setting_ip_adr_linear"
+            android:background="@drawable/opt_item_multbg_top_selector"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+	        <TextView
+	            android:id="@+id/textView2"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="IP地址"
+	            android:textAppearance="?android:attr/textAppearanceMedium" />
+	        <LinearLayout 
+	            android:gravity="right|center_vertical"
+	            android:orientation="vertical"
+	            android:layout_height="match_parent"
+	            android:layout_width="match_parent" >
+	            <ImageView 
+	                android:layout_height="20dp"
+	                android:layout_width="20dp"
+	                android:src="@drawable/jiantou_2" />
+	        </LinearLayout>
+        </LinearLayout>
+	    
+        <LinearLayout
+            android:clickable="true"
+            android:id="@+id/setting_port_linear"
+            android:background="@drawable/opt_item_multbg_mid_selector"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+	        <TextView
+	            android:id="@+id/textView3"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="通信端口"
+	            android:textAppearance="?android:attr/textAppearanceMedium" />
+	        <LinearLayout 
+	            android:gravity="right|center_vertical"
+	            android:orientation="vertical"
+	            android:layout_height="match_parent"
+	            android:layout_width="match_parent" >
+	            <ImageView 
+	                android:layout_height="20dp"
+	                android:layout_width="20dp"
+	                android:src="@drawable/jiantou_2" />
+	        </LinearLayout>
+        </LinearLayout>
+  
+        <LinearLayout
+            android:clickable="true"
+            android:id="@+id/setting_url_linear"
+            android:background="@drawable/opt_item_multbg_bottom_selector"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+	        <TextView
+	            android:id="@+id/textView4"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:text="通信url"
+	            android:textAppearance="?android:attr/textAppearanceMedium" />
+	        <LinearLayout 
+	            android:gravity="right|center_vertical"
+	            android:orientation="vertical"
+	            android:layout_height="match_parent"
+	            android:layout_width="match_parent" >
+	            <ImageView 
+	                android:layout_height="20dp"
+	                android:layout_width="20dp"
+	                android:src="@drawable/jiantou_2" />
+	        </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+    
+    <LinearLayout
+	    android:layout_marginTop="8dp"
+	    android:paddingLeft="4dp"
+	    android:paddingRight="4dp"
+	    android:layout_width="match_parent"
+	    android:layout_height="wrap_content"
+	    android:orientation="vertical" >       
+	     
+	    <TextView
+	        android:id="@+id/textViewDbPath"
+	        android:layout_marginLeft="20dp"
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:textColor="#858586"
+	        android:text="数据库文件目录"
+	        android:textAppearance="?android:attr/textAppearanceMedium" />
+        <LinearLayout
+	        android:clickable="true"
+	        android:paddingLeft="15dp"
+	        android:id="@+id/setting_db_path_linear"
+	        android:background="@drawable/opt_item_button_normal"
+	    	android:gravity="center_vertical"
+	        android:orientation="horizontal"
+	        android:layout_width="match_parent"
+	        android:layout_height="50dp" >
+		    <TextView
+		        android:id="@+id/textViewDbPath4"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="/SD卡目录/smart.db"
+		        android:textAppearance="?android:attr/textAppearanceMedium" />
+	    </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:id="@+id/setting_line_update"
+                android:clickable="true"
+                android:background="@drawable/opt_item_button_selector"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/textView5"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="检查更新" />
+	            
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

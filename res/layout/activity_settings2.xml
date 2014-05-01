@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:background="#ffffff"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+    
+    <LinearLayout
+        android:id="@+id/setttings_line_head"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+    	android:background="@drawable/head_bkground"
+        android:layout_width="match_parent"
+        android:layout_height="60dp" >
+
+        <TextView
+            android:id="@+id/textView11"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="设置"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    </LinearLayout>
+    
+    <LinearLayout 
+        android:id="@+id/setttings_line_bottom"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+		<Button
+		    android:layout_margin="2dp"
+		    android:layout_weight="1"
+	        android:id="@+id/setttings_btn_cancel"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:text="取消" />
+		<Button
+		    android:layout_weight="1"
+		    android:layout_margin="2dp"
+	        android:id="@+id/setttings_btn_save"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	        android:text="保存" />
+    </LinearLayout>
+	
+    <ScrollView
+        android:layout_below="@id/setttings_line_head"
+        android:layout_above="@id/setttings_line_bottom"
+        android:id="@+id/scrollView1"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <!-- start of scrolling -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+        
+		    <TextView
+		        android:id="@+id/textView1"
+		        android:layout_marginLeft="2dp"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:textColor="#858586"
+		        android:text="连接设置" />
+		    <View
+		        android:layout_width="fill_parent"
+		        android:layout_height="2px"
+				android:background="?android:attr/listDivider"></View>
+			    
+		     <LinearLayout
+		         android:clickable="true"
+		         android:layout_marginTop="3dp"
+		         android:layout_marginBottom="2dp"
+		         android:background="@color/gray"
+		         android:orientation="vertical"
+		         android:layout_width="match_parent"
+		         android:layout_height="wrap_content" >
+				<TextView
+				    android:id="@+id/textView2"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="IP地址/域名" />	
+				<EditText 
+				    android:id="@+id/settings_edtx_ip"
+				    android:layout_width="match_parent" 
+				    android:layout_height="wrap_content"
+				    android:digits="1234567890.abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-" />
+		     </LinearLayout>
+		     
+		     <LinearLayout
+		         android:clickable="true"
+		         android:layout_marginTop="3dp"
+		         android:layout_marginBottom="2dp"
+		         android:background="@color/gray"
+		         android:orientation="vertical"
+		         android:layout_width="match_parent"
+		         android:layout_height="wrap_content" >
+				<TextView
+				    android:id="@+id/textView2"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="端口" />	
+				<EditText 
+				    android:id="@+id/settings_edtx_port"
+				    android:layout_width="match_parent" 
+				    android:layout_height="wrap_content"
+				    android:inputType="number"
+				    android:digits="0123456789"/>
+		     </LinearLayout>
+		     
+		     <LinearLayout
+		         android:clickable="true"
+		         android:layout_marginTop="3dp"
+		         android:layout_marginBottom="2dp"
+		         android:background="@color/gray"
+		         android:orientation="vertical"
+		         android:layout_width="match_parent"
+		         android:layout_height="wrap_content" >
+				<TextView
+				    android:id="@+id/textView2"
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="服务名称" />	
+				<EditText 
+				    android:id="@+id/settings_edtx_service_name"
+				    android:layout_width="match_parent" 
+				    android:layout_height="wrap_content" />
+		     </LinearLayout>
+            
+	         <LinearLayout
+	             android:id="@+id/setting_line_update"
+	             android:clickable="true"
+	             android:background="@drawable/opt_item_button_selector"
+	             android:layout_width="match_parent"
+	             android:layout_height="wrap_content"
+	             android:gravity="center"
+	             android:orientation="vertical" >
+	
+	             <TextView
+	                 android:id="@+id/textView5"
+	                 android:textSize="18sp"
+	                 android:layout_width="wrap_content"
+	                 android:layout_height="wrap_content"
+	                 android:text="检查更新" />
+	          
+	         </LinearLayout>
+
+        <!-- end of scrolling -->
+        </LinearLayout>
+    </ScrollView>
+
+    
+
+</RelativeLayout>

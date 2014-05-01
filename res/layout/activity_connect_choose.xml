@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" "
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <ImageView
+        android:id="@+id/imageView1"
+        android:layout_width="match_parent"
+        android:layout_height="134dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/canbo_big_logo" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="128dp"
+        android:layout_height="58dp"
+        android:layout_gravity="center_horizontal"
+        android:src="@drawable/canbo_text" />
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <Button
+            android:id="@+id/btn_connect_choose_lan"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_menu_selector"
+            android:layout_marginTop="45dp"
+        	android:layout_gravity="center_horizontal"
+            android:text="LAN 登录" />
+
+        <Button
+            android:id="@+id/btn_connect_choose_wan"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/btn_menu_selector"
+            android:layout_marginTop="15dp"
+        	android:layout_gravity="center_horizontal"
+            android:text="WAN 登录" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <CheckBox
+                android:id="@+id/checkBox1"
+                android:layout_width="180dp"
+                android:layout_height="wrap_content"
+            	android:layout_marginTop="15dp"
+        		android:layout_gravity="center_horizontal"
+                android:text="记住登录方式" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

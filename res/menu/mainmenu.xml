@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item android:id="@+id/menu_setting" android:title="设置" android:orderInCategory="10" android:showAsAction="withText"></item>
+    <item android:id="@+id/menu_about" android:title="关于" android:orderInCategory="11" android:showAsAction="withText"></item>
+    <item android:id="@+id/menu_exit" android:title="退出" android:orderInCategory="12" android:showAsAction="withText"></item>
+    
+
+</menu>

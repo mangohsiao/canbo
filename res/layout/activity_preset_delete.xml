@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <!-- start of head --> 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/head_bkground" >
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="match_parent" >
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:textSize="22sp"
+                android:textColor="@color/canbo_color_green_01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="删除预置点" />
+            
+        </LinearLayout>
+        
+        
+        <LinearLayout
+            android:layout_width="50dp"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+            
+        </LinearLayout>
+        
+    </LinearLayout>	<!-- end of head --> 
+
+    <LinearLayout android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.0">
+	    <ListView
+	        android:id="@+id/listview_preset_del"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content" >
+	    </ListView>
+	</LinearLayout>	
+
+    
+<!-- start of bottom -->    
+    <LinearLayout
+        android:visibility="gone"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:id="@+id/line_preset_del_yes"
+            android:background="@drawable/opt_item_button_selector"
+            android:layout_weight="1.0"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_height="50dp" > 
+        
+		        <TextView
+		            android:layout_marginLeft="5dp"
+		            android:textSize="18sp"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="确定" />
+		        
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/line_preset_del_cancel"
+            android:background="@drawable/opt_item_button_selector"
+            android:layout_weight="1.0"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_height="50dp" >
+		        
+		        <TextView
+		            android:layout_marginLeft="5dp"
+		            android:textSize="18sp"
+		            android:layout_width="wrap_content"
+		            android:layout_height="wrap_content"
+		            android:text="取消" />
+		        
+        </LinearLayout>
+
+    </LinearLayout>
+<!-- end of bottom -->
+  
+</LinearLayout>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/head"
+        android:layout_alignParentTop="true"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/head_bkground" >
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="match_parent" >
+        </LinearLayout>
+        
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:textSize="22sp"
+                android:textColor="@color/canbo_color_green_01"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="安全防护" />
+            
+        </LinearLayout>
+        
+        
+        <LinearLayout
+            android:layout_width="70dp"
+            android:gravity="center"
+            android:layout_height="match_parent"
+            android:orientation="horizontal" >
+            
+            <LinearLayout 
+                android:id="@+id/security_line_setting"
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="5dp"
+                android:background="@drawable/opt_item_button_selector">
+                
+	            <TextView 
+	                android:layout_height="wrap_content"
+	                android:layout_width="wrap_content"
+	                android:layout_marginLeft="5dp"
+	                android:layout_marginRight="5dp"
+	                android:text="设置"
+	                android:textSize="18sp" />
+	            
+            </LinearLayout>
+            
+        </LinearLayout>
+        
+    </LinearLayout>	<!-- end of head -->
+
+    <RelativeLayout
+        android:layout_below="@id/head"
+        android:id="@+id/security_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/status"
+        android:orientation="vertical" >
+
+        <LinearLayout 
+            android:id="@+id/security_line_btn_holder"
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true">
+	        <Button
+	            android:layout_weight="1"
+	            android:id="@+id/security_btn_deploy"
+		        android:layout_marginLeft="1dp"
+		        android:layout_marginRight="1dp"
+		        android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:text="@string/security_deploy" />
+	        <Button
+	            android:layout_weight="1"
+	            android:id="@+id/security_btn_undeploy"
+		        android:layout_marginLeft="1dp"
+		        android:layout_marginRight="1dp"
+		        android:layout_width="match_parent"
+	            android:layout_height="wrap_content"
+	            android:text="@string/security_undeploy" />
+        </LinearLayout>
+        
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/security_line_btn_holder">
+	        <TextView
+	            android:id="@+id/security_txv_status1"
+	            android:gravity="right"
+	            android:layout_weight="1"
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+			    android:layout_marginRight="3dp"
+	            android:text="安防状态：" />
+	        <TextView
+	            android:id="@+id/security_txv_status2"
+	            android:gravity="left"
+			    android:layout_marginLeft="3dp"
+	            android:layout_weight="1"
+	            android:layout_width="0dp"
+	            android:layout_height="wrap_content"
+	            android:text="正在运行" />      
+        </LinearLayout>  
+    </RelativeLayout>
+
+    
+    <LinearLayout 
+        android:id="@+id/security_bottom_holder"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_marginBottom="3dp"
+        android:layout_alignParentBottom="true">
+	    <Button
+	        android:layout_weight="1"
+	        android:id="@+id/security_btn_add_deploy"
+	        android:layout_marginLeft="5dp"
+	        android:layout_marginRight="5dp"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	            android:background="@drawable/opt_item_button_selector"
+	        android:text="添加" />        
+	    <Button
+	        android:layout_weight="1"
+	        android:id="@+id/security_btn_remove"
+	        android:layout_marginLeft="5dp"
+	        android:layout_marginRight="5dp"
+	        android:layout_width="0dp"
+	        android:layout_height="wrap_content"
+	            android:background="@drawable/opt_item_button_selector"
+	        android:text="移除" />        
+    </LinearLayout>
+    
+    <ListView
+        android:id="@+id/security_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/security_bottom_holder"
+        android:layout_below="@id/security_status" >
+
+    </ListView>
+
+</RelativeLayout>

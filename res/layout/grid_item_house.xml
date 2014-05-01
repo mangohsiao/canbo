@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="15dp"
+    android:orientation="vertical"
+    android:background="@drawable/opt_item_button_selector"
+    android:paddingTop="15dp"
+    android:paddingBottom="15dp">
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+	    android:layout_weight="0.15"
+	    >
+        
+	    <TextView
+	        android:id="@+id/house_item_name"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_gravity="center_horizontal|bottom"
+	        android:gravity="center_horizontal|bottom"
+	        android:text="TextView"
+	        android:textColor="#4a4a4a"
+	        android:textSize="18sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/img_house_item"
+        android:layout_width="90dp"
+        android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="5dp"
+        android:layout_weight="0.92"
+        android:src="@drawable/ic_launcher" />
+
+</LinearLayout>
