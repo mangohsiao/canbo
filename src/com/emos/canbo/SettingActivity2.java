@@ -12,31 +12,22 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.emos.canbo.common.BaseActivity;
+import com.emos.canbo.update.UpdateComponent;
 
 public class SettingActivity2 extends BaseActivity implements OnClickListener{
 
-	/**
-	 */
 	EditText settings_edtx_ip = null;
-	/**
-	 */
 	EditText settings_edtx_port = null;
-	/**
-	 */
 	EditText settings_edtx_service_name = null;
 
-	/**
-	 */
 	Button setttings_btn_save = null;
-	/**
-	 */
 	Button setttings_btn_cancel = null;
+	LinearLayout setting_line_update = null;
 	
-	/**
-	 */
 	SharedPreferences sharedPreferences = null;
 	
 	@Override
@@ -68,9 +59,11 @@ public class SettingActivity2 extends BaseActivity implements OnClickListener{
 
 		setttings_btn_save = (Button)findViewById(R.id.setttings_btn_save);
 		setttings_btn_cancel = (Button)findViewById(R.id.setttings_btn_cancel);
+		setting_line_update = (LinearLayout)findViewById(R.id.setting_line_update);
 
 		setttings_btn_save.setOnClickListener(this);
 		setttings_btn_cancel.setOnClickListener(this);
+		setting_line_update.setOnClickListener(this);		
 	}
 
 	@Override
@@ -116,6 +109,12 @@ public class SettingActivity2 extends BaseActivity implements OnClickListener{
 			SettingActivity2.this.finish();
 			break;
 
+		case R.id.setting_line_update:
+			UpdateComponent updateComponent = new UpdateComponent(this);
+			updateComponent.check_update_with_alert();
+//			updateComponent.check_update_background();
+			break;
+			
 		default:
 			break;
 		}		

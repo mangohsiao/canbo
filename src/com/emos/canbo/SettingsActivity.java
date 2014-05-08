@@ -113,7 +113,7 @@ public class SettingsActivity extends Activity implements View.OnClickListener{
 			break;
 			
 		case R.id.setting_line_update:
-			updateComponent.check_update();
+			updateComponent.check_update_with_alert();
 			break;
 		}
 	}

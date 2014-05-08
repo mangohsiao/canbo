@@ -10,10 +10,11 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 import org.apache.http.params.CoreConnectionPNames;
 import org.apache.http.util.EntityUtils;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MyHttpUtil {
-	public static JSONObject getJson(String url, List<BasicNameValuePair> params) {
+	public static JSONObject getJson(String url, List<BasicNameValuePair> params) throws Exception {
 		
 		/* build param */
 		String param = URLEncodedUtils.format(params, "UTF-8");
@@ -27,16 +28,15 @@ public class MyHttpUtil {
 		
 		try {
 			HttpResponse response = client.execute(getMethodUri);
-
-//			System.out.println("resCode: " + response.getStatusLine().getStatusCode());
-//			System.out.println("result: " + EntityUtils.toString(response.getEntity(),"UTF-8"));
 			
 			JSONObject json = new JSONObject(EntityUtils.toString(response.getEntity(),"UTF-8"));
-			System.out.println("json: " + json.toString());
+//			System.out.println("json: " + json.toString());
 			return json;
-		} catch (Exception e) {
-			// TODO: handle exception
+		}catch (JSONException je){
+			je.printStackTrace();
+		}catch (Exception e) {
 			e.printStackTrace();
+			throw e;
 		}
 		
 		return null;

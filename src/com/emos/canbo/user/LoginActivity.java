@@ -30,8 +30,8 @@ import com.emos.canbo.R;
 import com.emos.canbo.SettingActivity2;
 import com.emos.canbo.common.*;
 import com.emos.canbo.sync.DBHttpSync;
-import com.emos.canbo.update.MDBSyncClient;
-import com.emos.canbo.update.MDBSyncMessage;
+import com.emos.canbo.sync.MDBSyncClient;
+import com.emos.canbo.sync.MDBSyncMessage;
 
 public class LoginActivity extends BaseActivity implements OnClickListener,OnCheckedChangeListener{
 	
