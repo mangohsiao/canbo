@@ -59,7 +59,7 @@ public class OptListActivity extends LinkedActivity {
 	String r_name;	//房间名字
 	/**
 	 */
-	String op_dev;	//dev类型代码
+	String op_devtype;	//dev类型代码
 	
 	/**
 	 */
@@ -95,8 +95,8 @@ public class OptListActivity extends LinkedActivity {
 		Bundle bundle = intent.getExtras();
 		d_mac = bundle.getString("d_mac");
 		d_serialport = bundle.getInt("d_serialport");
-		if((op_dev = bundle.getString("op_dev"))!=null){
-			//Log.d(tag, "get op_dev.");
+		if((op_devtype = bundle.getString("op_devtype"))!=null){
+			//Log.d(tag, "get op_devtype.");
 			dataInitial();
 		}
 		r_name = bundle.getString("r_name")==null?"未知房间":bundle.getString("r_name");
@@ -149,14 +149,14 @@ public class OptListActivity extends LinkedActivity {
 		}else{
 			Log.i("db", "db not null");
 			try {
-				Cursor c = db.rawQuery("SELECT * FROM Operation WHERE op_dev=? AND op_parent='0' ORDER BY op_id;",new String[]{op_dev});
+				Cursor c = db.rawQuery("SELECT * FROM Operation WHERE op_devtype=? AND op_parent='0' ORDER BY op_id;",new String[]{op_devtype});
 
 				Log.i("db", "db query done");
 				
 				while(c.moveToNext()){
 					Map<String,String> map = new HashMap<String, String>();
 					map.put("op_id", c.getString(c.getColumnIndex("op_id")) );
-					map.put("op_dev", op_dev);
+					map.put("op_devtype", op_devtype);
 					map.put("op_code", c.getString(c.getColumnIndex("op_code")));
 					map.put("op_num", c.getString(c.getColumnIndex("op_num")));
 					map.put("op_type", Integer.toString( c.getInt(c.getColumnIndex("op_type")) ));
@@ -232,7 +232,7 @@ public class OptListActivity extends LinkedActivity {
 //			txv_opt_num = (TextView)convertView.findViewById(R.id.txv_opt_num);
 //			Map<String, String> tempMap = opt_data_list.get(position);
 //			txv_opt_name.setText(tempMap.get("op_desc"));
-//			txv_opt_dev_code.setText(tempMap.get("op_dev"));
+//			txv_opt_dev_code.setText(tempMap.get("op_devtype"));
 //			txv_opt_code.setText(tempMap.get("op_code"));
 //			txv_opt_num.setText(tempMap.get("op_num"));
 /** 旧版本 **/
@@ -287,7 +287,7 @@ public class OptListActivity extends LinkedActivity {
 			final List<String> op_num_List = OpParse.toList(op_num);	/** 解析op_num,存到list **/
 			
 //			txv.setText("");
-//			txv.append("op_dev: " + op_dev1 + "\n");
+//			txv.append("op_devtype: " + op_devtype1 + "\n");
 //			txv.append("d_mac: " + d_mac + "\n");
 //			txv.append("d_serialport: " + d_serialport + "\n");
 //			txv.append("op_desc: " + tempMap.get("op_desc") + "\n");
@@ -309,9 +309,9 @@ public class OptListActivity extends LinkedActivity {
 						final JSONObject jobj0 = new JSONObject();
 						try {
 //							jobj0.put("1", d_mac);
-//							jobj0.put("2", op_dev);
+//							jobj0.put("2", op_devtype);
 							jobj0.put("1", OpParse.hexStrToInt(d_mac));
-							jobj0.put("2", OpParse.hexStrToInt(op_dev));
+							jobj0.put("2", OpParse.hexStrToInt(op_devtype));
 							jobj0.put("3", OpParse.hexStrToInt(op_code));
 							jobj0.put("4", OpParse.hexStrToInt(op_num));
 //							jobj0.put("3", op_code);
@@ -358,9 +358,9 @@ public class OptListActivity extends LinkedActivity {
 							final JSONObject jobj = new JSONObject();
 							try {
 //								jobj.put("1", d_mac);
-//								jobj.put("2", op_dev);
+//								jobj.put("2", op_devtype);
 								jobj.put("1", OpParse.hexStrToInt(d_mac));
-								jobj.put("2", OpParse.hexStrToInt(op_dev));
+								jobj.put("2", OpParse.hexStrToInt(op_devtype));
 								jobj.put("3", OpParse.hexStrToInt(op_code_List.get(0)));
 								jobj.put("4", OpParse.hexStrToInt(op_num_List.get(0)));
 								jobj.put("5", d_serialport);
@@ -371,7 +371,7 @@ public class OptListActivity extends LinkedActivity {
 							}
 //							final String cmd = "{\"1\":" 
 //									+ d_mac + ",\"2\":" 
-//									+ op_dev + ",\"3\":" 
+//									+ op_devtype + ",\"3\":" 
 //									+ "0x2F" + ",\"4\":" 
 //									+ "0x01" + ",\"5\":" 
 //									+ d_serialport + "}";
@@ -395,9 +395,9 @@ public class OptListActivity extends LinkedActivity {
 							final JSONObject jobj = new JSONObject();
 							try {
 //								jobj.put("1", d_mac);
-//								jobj.put("2", op_dev);
+//								jobj.put("2", op_devtype);
 								jobj.put("1", OpParse.hexStrToInt(d_mac));
-								jobj.put("2", OpParse.hexStrToInt(op_dev));
+								jobj.put("2", OpParse.hexStrToInt(op_devtype));
 								jobj.put("3", OpParse.hexStrToInt(op_code_List.get(0)));
 								jobj.put("4", OpParse.hexStrToInt(op_num_List.get(1)));
 								jobj.put("5", d_serialport);
@@ -409,7 +409,7 @@ public class OptListActivity extends LinkedActivity {
 							}
 //							final String cmd = "{\"1\":" 
 //									+ d_mac + ",\"2\":" 
-//									+ op_dev + ",\"3\":" 
+//									+ op_devtype + ",\"3\":" 
 //									+ "0x2F" + ",\"4\":" 
 //									+ "0x00" + ",\"5\":" 
 //									+ d_serialport + "}";
@@ -431,7 +431,7 @@ public class OptListActivity extends LinkedActivity {
 				break;
 				
 			case 2:	/** op_type_2.xml, op_type='3' Time seek **/
-				if(op_dev.equals("0x07")){	//TODO 热水器还没好。
+				if(op_devtype.equals("0x07")){	//TODO 热水器还没好。
 					break;
 				}
 				Button op_2_btn = (Button)convertView.findViewById(R.id.op_2_btn);
@@ -442,7 +442,7 @@ public class OptListActivity extends LinkedActivity {
 					public void onClick(View arg0) {
 						Map<String, String> dataMap = new HashMap<String, String>();
 						dataMap.put("d_mac", d_mac);
-						dataMap.put("op_dev", op_dev);
+						dataMap.put("op_devtype", op_devtype);
 						dataMap.put("op_code", op_code);
 						dataMap.put("op_num", op_num);
 						dataMap.put("op_id", op_id);
@@ -459,7 +459,7 @@ public class OptListActivity extends LinkedActivity {
 				Button op_3_btn = (Button)convertView.findViewById(R.id.op_3_btn);
 				op_3_btn.setText(tempMap.get("op_desc"));
 				//analysis op_num
-				final List<Map<String, String>> list = MyQuery.getSubUIMap(OptListActivity.this, op_dev, tempMap.get("op_id"));				
+				final List<Map<String, String>> list = MyQuery.getSubUIMap(OptListActivity.this, op_devtype, tempMap.get("op_id"));				
 				op_3_btn.setOnClickListener(new View.OnClickListener() {
 					
 					@Override
@@ -467,7 +467,7 @@ public class OptListActivity extends LinkedActivity {
 						// build and show Dialog
 						Map<String, String> dataMap = new HashMap<String, String>();
 						dataMap.put("d_mac", d_mac);
-						dataMap.put("op_dev", op_dev);
+						dataMap.put("op_devtype", op_devtype);
 						dataMap.put("op_code", op_code);
 						dataMap.put("d_serialport", Integer.toString(d_serialport));
 						dataMap.put("connectionUrl", connectionUrl);
@@ -488,7 +488,7 @@ public class OptListActivity extends LinkedActivity {
 						// build and show Dialog
 						Map<String, String> dataMap = new HashMap<String, String>();
 						dataMap.put("d_mac", d_mac);
-						dataMap.put("op_dev", op_dev);
+						dataMap.put("op_devtype", op_devtype);
 						dataMap.put("op_code", op_code);
 						dataMap.put("op_num", op_num);
 						dataMap.put("d_serialport", Integer.toString(d_serialport));

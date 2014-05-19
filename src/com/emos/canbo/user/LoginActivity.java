@@ -124,6 +124,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener,OnChe
 		super.onOptionsItemSelected(item);
 		switch (item.getItemId()) {
 		case MENU_NETWORK_SETTING:
+			((MyApp)getApplicationContext()).setLoginModeGLB(CanboCommon.LOGIN_MODE_LAN);
 			Intent it = new Intent(this, SettingActivity2.class);
 			startActivity(it);
 			break;

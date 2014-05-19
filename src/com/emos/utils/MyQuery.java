@@ -14,8 +14,8 @@ import com.emos.canbo.DBhelper;
 import com.emos.canbo.database.SmartDbHelper;
 
 public class MyQuery {
-	public static List< Map<String, String>> getSubUIMap(Context context, String op_dev, String op_id) {
-		Log.v("MyQuery", "op_dev:" + op_dev + " op_id:" + op_id);
+	public static List< Map<String, String>> getSubUIMap(Context context, String op_devtype, String op_id) {
+		Log.v("MyQuery", "op_devtype:" + op_devtype + " op_id:" + op_id);
 		SQLiteDatabase db = SmartDbHelper.openSQLite(context);
 		List< Map<String, String>> list = new ArrayList<Map<String,String>>();
 		if(db==null){
@@ -24,7 +24,7 @@ public class MyQuery {
 		}else{
 			Log.i("db", "db not null");
 			try {
-				Cursor c = db.rawQuery("SELECT * FROM Operation WHERE op_dev=? AND op_parent=?;",new String[]{op_dev,op_id});
+				Cursor c = db.rawQuery("SELECT * FROM Operation WHERE op_devtype=? AND op_parent=?;",new String[]{op_devtype,op_id});
 
 				Log.i("db", "db query done");
 				
@@ -48,8 +48,8 @@ public class MyQuery {
 		
 	}
 
-	public static String getType2OpCodeMap(Context context, String op_dev) {
-		Log.v("MyQuery", "getType2OpCodeMap() - op_dev:" + op_dev);
+	public static String getType2OpCodeMap(Context context, String op_devtype) {
+		Log.v("MyQuery", "getType2OpCodeMap() - op_devtype:" + op_devtype);
 		String op_code = null;
 		SQLiteDatabase db = SmartDbHelper.openSQLite(context);
 		if(db==null){
@@ -58,7 +58,7 @@ public class MyQuery {
 		}else{
 			Log.i("db", "db not null");
 			try {
-				Cursor c = db.rawQuery("SELECT * FROM Operation WHERE op_dev=? AND op_type='2';",new String[]{op_dev});
+				Cursor c = db.rawQuery("SELECT * FROM Operation WHERE op_devtype=? AND op_type='2';",new String[]{op_devtype});
 
 				Log.i("db", "db query done");
 				
@@ -76,8 +76,8 @@ public class MyQuery {
 		return op_code;
 	}
 	
-	public static Map<String, String> getType2SubOpMap(Context context, String op_dev, String op_id) {
-		Log.v("MyQuery", "op_dev:" + op_dev + " op_id:" + op_id);
+	public static Map<String, String> getType2SubOpMap(Context context, String op_devtype, String op_id) {
+		Log.v("MyQuery", "op_devtype:" + op_devtype + " op_id:" + op_id);
 		SQLiteDatabase db = SmartDbHelper.openSQLite(context);
 		Map<String,String> map = new HashMap<String, String>();
 		if(db==null){
@@ -86,7 +86,7 @@ public class MyQuery {
 		}else{
 //			Log.i("db", "db not null");
 			try {
-				Cursor c = db.rawQuery("SELECT * FROM Operation WHERE op_dev=? AND op_parent=?;",new String[]{op_dev,op_id});
+				Cursor c = db.rawQuery("SELECT * FROM Operation WHERE op_devtype=? AND op_parent=?;",new String[]{op_devtype,op_id});
 //				Log.i("db", "db query done");
 				while(c.moveToNext()){
 					for(int i=0;i<c.getColumnCount();i++){

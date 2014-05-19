@@ -21,6 +21,7 @@ import com.emos.canbo.update.UpdateComponent;
 public class SettingActivity2 extends BaseActivity implements OnClickListener{
 
 	EditText settings_edtx_ip = null;
+	EditText settings_edtx_lan_ip = null;
 	EditText settings_edtx_port = null;
 	EditText settings_edtx_service_name = null;
 
@@ -44,6 +45,7 @@ public class SettingActivity2 extends BaseActivity implements OnClickListener{
 	private void initialView() {
 		// TODO Auto-generated method stub
 		settings_edtx_ip = (EditText)findViewById(R.id.settings_edtx_ip);
+		settings_edtx_lan_ip = (EditText)findViewById(R.id.settings_edtx_lan_ip);
 		settings_edtx_port = (EditText)findViewById(R.id.settings_edtx_port);
 		settings_edtx_service_name = (EditText)findViewById(R.id.settings_edtx_service_name);
 

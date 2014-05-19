@@ -27,7 +27,7 @@ public class SeekDialog extends Dialog {
 	
 	/**
 	 */
-	String op_dev;
+	String op_devtype;
 	/**
 	 */
 	String d_mac;
@@ -77,15 +77,15 @@ public class SeekDialog extends Dialog {
 	 */
 	TextView seekdialog_seek_value_txv;
 	
-	/** dataMap 传进来d_mac,op_dev,op_code **/
+	/** dataMap 传进来d_mac,op_devtype,op_code **/
 	public SeekDialog(Context context, Map<String, String> dataMap) {
 		super(context);
 		this.ctxSeekDialog = context;
 		
 		jsobj = new JSONObject();
 		
-		// TODO initial the d_mac,op_dev,
-		op_dev = dataMap.get("op_dev");
+		// TODO initial the d_mac,op_devtype,
+		op_devtype = dataMap.get("op_devtype");
 		d_mac = dataMap.get("d_mac");
 		op_id = dataMap.get("op_id");
 		d_serialport = dataMap.get("d_serialport");
@@ -93,26 +93,26 @@ public class SeekDialog extends Dialog {
 				
 		try {
 			// cmd 1
-//			String op_code_1 = MyQuery.getType2OpCodeMap(op_dev);
+//			String op_code_1 = MyQuery.getType2OpCodeMap(op_devtype);
 			String op_code_1 = "0x3F";			
 			String op_num_1 = "0x01";
 			jsobj.put("1", OpParse.hexStrToInt(d_mac));
-			jsobj.put("2", OpParse.hexStrToInt(op_dev));
+			jsobj.put("2", OpParse.hexStrToInt(op_devtype));
 			jsobj.put("3", OpParse.hexStrToInt(op_code_1));
 			jsobj.put("4", OpParse.hexStrToInt(op_num_1));
 			jsobj.put("5", Integer.parseInt(d_serialport));
 			// cmd 2
 			jsobj.put("6", OpParse.hexStrToInt(d_mac));
-			jsobj.put("7", OpParse.hexStrToInt(op_dev));
+			jsobj.put("7", OpParse.hexStrToInt(op_devtype));
 			jsobj.put("8", OpParse.hexStrToInt(dataMap.get("op_code")));
 			jsobj.put("9", OpParse.hexStrToInt(dataMap.get("op_num")));
 			jsobj.put("10", Integer.parseInt(d_serialport));
 			// cmd 3
-			Map<String, String> cmd3Map = MyQuery.getType2SubOpMap(ctxSeekDialog, op_dev, op_id);
+			Map<String, String> cmd3Map = MyQuery.getType2SubOpMap(ctxSeekDialog, op_devtype, op_id);
 			dfMinMax = cmd3Map.get("op_num");
 			seekRange = OpParse.defaultMinMaxToMap(dfMinMax);
 			jsobj.put("11", OpParse.hexStrToInt(d_mac));
-			jsobj.put("12", OpParse.hexStrToInt(op_dev));
+			jsobj.put("12", OpParse.hexStrToInt(op_devtype));
 			jsobj.put("13", OpParse.hexStrToInt(cmd3Map.get("op_code")));
 //			jsobj.put("14", null);	/** 14 is to add **/
 			jsobj.put("15", Integer.parseInt(d_serialport));
@@ -124,10 +124,10 @@ public class SeekDialog extends Dialog {
 		valMin = seekRange.get("valMin");
 		valMax = seekRange.get("valMax");
 //		Map<Integer, Integer> cmd1 = new HashMap<Integer, Integer>();
-//		String op_code_1 = MyQuery.getType2OpCodeMap(op_dev);
+//		String op_code_1 = MyQuery.getType2OpCodeMap(op_devtype);
 //		String op_num_1 = "0x01";
 //		cmd1.put(1, OpParse.hexStrToInt(d_mac));
-//		cmd1.put(2, OpParse.hexStrToInt(op_dev));
+//		cmd1.put(2, OpParse.hexStrToInt(op_devtype));
 //		cmd1.put(3, OpParse.hexStrToInt(op_code_1));
 //		cmd1.put(4, OpParse.hexStrToInt(op_num_1));
 //		cmd1.put(5, Integer.parseInt(d_serialport));
@@ -136,7 +136,7 @@ public class SeekDialog extends Dialog {
 //		// cmd 2
 //		Map<Integer, Integer> cmd2 = new HashMap<Integer, Integer>();
 //		cmd2.put(1, OpParse.hexStrToInt(d_mac));
-//		cmd2.put(2, OpParse.hexStrToInt(op_dev));
+//		cmd2.put(2, OpParse.hexStrToInt(op_devtype));
 //		cmd2.put(3, OpParse.hexStrToInt(dataMap.get("op_code")));
 //		cmd2.put(4, OpParse.hexStrToInt(dataMap.get("op_num")));
 //		cmd2.put(5, Integer.parseInt(d_serialport));

@@ -42,7 +42,7 @@ public class RadioDialog extends Dialog {
 	String d_mac;
 	/**
 	 */
-	String op_dev;
+	String op_devtype;
 	/**
 	 */
 	String op_code;
@@ -58,12 +58,12 @@ public class RadioDialog extends Dialog {
 //		this.ctx = context;
 //	}
 	
-	/** dataMap 传进来d_mac,op_dev,op_code **/
+	/** dataMap 传进来d_mac,op_devtype,op_code **/
 	public RadioDialog(Context context, Map<String, String> dataMap) {
 		super(context);
 		this.ctx = context;
 		d_mac = dataMap.get("d_mac");
-		op_dev = dataMap.get("op_dev");
+		op_devtype = dataMap.get("op_devtype");
 //		op_code = dataMap.get("op_code"); /** op_code is NULL in DB **/
 		d_serialport = dataMap.get("d_serialport");
 		connectionUrl = dataMap.get("connectionUrl");
@@ -75,6 +75,9 @@ public class RadioDialog extends Dialog {
 	
 	private void setRadioBtn() {
 //		Log.v(TAG, "SET RADIO. " + list.size());
+		if(radioList == null){
+			return;
+		}
 		int index = 0;
 		for (Map<String, String> map : radioList) {
 //			Log.v(TAG, "map size" + map.size());
@@ -125,12 +128,12 @@ public class RadioDialog extends Dialog {
 				int checkId = rdGroup.getCheckedRadioButtonId();
 				String op_num = radioList.get(checkId).get("op_num");
 				op_code = radioList.get(checkId).get("op_code");
-				Log.v(TAG, " 1." + d_mac + " 2." + op_dev + " 3." + op_code + " 4." + op_num);
+				Log.v(TAG, " 1." + d_mac + " 2." + op_devtype + " 3." + op_code + " 4." + op_num);
 				//build jsobj and send
 				final JSONObject jobj0 = new JSONObject();
 				try {
 					jobj0.put("1", OpParse.hexStrToInt(d_mac));
-					jobj0.put("2", OpParse.hexStrToInt(op_dev));
+					jobj0.put("2", OpParse.hexStrToInt(op_devtype));
 					jobj0.put("3", OpParse.hexStrToInt(op_code));
 					jobj0.put("4", OpParse.hexStrToInt(op_num));
 					jobj0.put("5", Integer.parseInt(d_serialport));

@@ -104,7 +104,7 @@ public class RoomSightActivity extends ExActivity {
 		}else{
 			Log.i("db", "db not null");
 			try {
-				Cursor c = db.rawQuery("SELECT * FROM Room WHERE hourse_id == ?",new String[]{Integer.toString(house_id)});
+				Cursor c = db.rawQuery("SELECT * FROM Room WHERE h_id == ?",new String[]{Integer.toString(house_id)});
 
 				Log.i("db", "db query done");
 				

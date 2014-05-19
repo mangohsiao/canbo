@@ -34,7 +34,7 @@ public class RangeDialog extends Dialog {
 	String d_mac;	
 	/**
 	 */
-	String op_dev;
+	String op_devtype;
 	/**
 	 */
 	String op_code;
@@ -86,7 +86,7 @@ public class RangeDialog extends Dialog {
 		
 		//initial val
 		d_mac = dataMap.get("d_mac");
-		op_dev = dataMap.get("op_dev");
+		op_devtype = dataMap.get("op_devtype");
 		op_code = dataMap.get("op_code");
 		op_num = dataMap.get("op_num");
 		d_serialport = dataMap.get("d_serialport");
@@ -99,12 +99,12 @@ public class RangeDialog extends Dialog {
 		valMax = dmmStepMap.get("valMax");
 		valStep = dmmStepMap.get("valStep");
 		
-//		Log.v(TAG, " 1." + d_mac + " 2." + op_dev + " 3." + op_code + " 4." + op_num + " 5." + d_serialport);
+//		Log.v(TAG, " 1." + d_mac + " 2." + op_devtype + " 3." + op_code + " 4." + op_num + " 5." + d_serialport);
 		//initial JSONObject
 		jsObj = new JSONObject();
 		try {
 			jsObj.put("1", OpParse.hexStrToInt(d_mac));
-			jsObj.put("2", OpParse.hexStrToInt(op_dev));
+			jsObj.put("2", OpParse.hexStrToInt(op_devtype));
 			jsObj.put("3", OpParse.hexStrToInt(op_code));
 			// 4 will be add onClick();
 			jsObj.put("5", Integer.parseInt(d_serialport));

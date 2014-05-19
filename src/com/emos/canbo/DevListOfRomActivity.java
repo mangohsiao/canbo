@@ -120,7 +120,7 @@ public class DevListOfRomActivity extends LinkedActivity {
 				Intent intent = new Intent(getApplicationContext(), OptListActivity.class);
 				Bundle bundle = new Bundle();
 				bundle.putString("dev_name", mDevice.d_name);
-				bundle.putString("op_dev", mDevice.d_devtype);
+				bundle.putString("op_devtype", mDevice.d_devtype);
 				bundle.putString("d_mac", mDevice.d_mac);
 				bundle.putInt("d_serialport", mDevice.d_serialport);
 				bundle.putString("r_name", r_name);
@@ -150,7 +150,7 @@ public class DevListOfRomActivity extends LinkedActivity {
 		}else{
 			Log.i("db", "db not null");
 			try {
-				Cursor c = db.rawQuery("SELECT * FROM Device WHERE r_id == ? AND `category` == 0",new String[]{Integer.toString(r_id)});
+				Cursor c = db.rawQuery("SELECT * FROM Device WHERE r_id == ? ",new String[]{Integer.toString(r_id)});
 
 				Log.i("db", "db query done");
 				
@@ -303,9 +303,9 @@ public class DevListOfRomActivity extends LinkedActivity {
 			device_line_btnOnOff.setVisibility(View.GONE);
 			
 			//set image source
-			String op_dev = dev_list_data.get(position).d_devtype;
-			int op_dev_int = OpParse.hexStrToInt(op_dev);
-//			Log.v(TAG, "op_dev:" + op_dev_int);
+			String op_devtype = dev_list_data.get(position).d_devtype;
+			int op_dev_int = OpParse.hexStrToInt(op_devtype);
+//			Log.v(TAG, "op_devtype:" + op_dev_int);
 			switch (op_dev_int) {
 			case 2: /** смял╩З    2, 0x02 **/
 				imgv_dev_item.setImageDrawable(getResources().getDrawable(R.drawable.dev_0x02));

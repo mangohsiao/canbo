@@ -15,6 +15,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.emos.canbo.MTag;
 import com.emos.canbo.tools.MD5Util;
 
 import android.annotation.SuppressLint;
@@ -111,6 +112,7 @@ public class UpdateComponent {
 				JSONObject check_res = null;
 				try {
 					check_res = MyHttpUtil.getJson(url.toString(), params);
+					Log.v(MTag.mango, "JSON: " + check_res.toString());
 				} catch (Exception e1) {
 					e1.printStackTrace();
 					handler.sendEmptyMessage(MSG_CONNECT_ERR);

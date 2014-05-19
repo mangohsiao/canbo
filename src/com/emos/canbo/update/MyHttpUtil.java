@@ -30,7 +30,6 @@ public class MyHttpUtil {
 			HttpResponse response = client.execute(getMethodUri);
 			
 			JSONObject json = new JSONObject(EntityUtils.toString(response.getEntity(),"UTF-8"));
-//			System.out.println("json: " + json.toString());
 			return json;
 		}catch (JSONException je){
 			je.printStackTrace();

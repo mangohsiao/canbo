@@ -187,7 +187,7 @@ public class SecurityActivity2 extends Activity implements View.OnClickListener{
 			Log.i("db", "db is null");
 		}else{
 			try {
-				Cursor c = db.rawQuery("SELECT * FROM Device WHERE `category`==1",null);				
+				Cursor c = db.rawQuery("SELECT * FROM Sensor_Device ;",null);				
 				while(c.moveToNext()){
 					Device device = new Device();
 					device.d_mac = c.getString(c.getColumnIndex("d_mac"));
