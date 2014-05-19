@@ -46,7 +46,7 @@
             android:layout_marginRight="8dp"
             android:layout_weight="1"
             android:background="@drawable/opt_item_button_selector"
-            android:text="Cancel" />
+            android:text="@string/global_CANCEL" />
 
         <Button
             android:id="@+id/appoint_dl_01_btn_next"
@@ -56,7 +56,7 @@
             android:layout_marginRight="8dp"
             android:layout_weight="1"
             android:background="@drawable/opt_item_button_selector"
-            android:text="Next" />
+            android:text="@string/global_NEXT" />
     </LinearLayout>
 
 </LinearLayout>

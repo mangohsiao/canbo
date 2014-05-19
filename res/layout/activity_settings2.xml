@@ -85,8 +85,30 @@
 				    android:layout_width="wrap_content"
 				    android:layout_height="wrap_content"
 				    android:text="IP地址/域名" />	
-				<EditText 
+				<EditText
+				    android:editable="false"
+				    android:focusable="false"
 				    android:id="@+id/settings_edtx_ip"
+				    android:layout_width="match_parent" 
+				    android:layout_height="wrap_content"
+				    android:digits="1234567890.abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-" />
+		     </LinearLayout>		     
+			    
+		     <LinearLayout
+		         android:visibility="gone"
+		         android:clickable="true"
+		         android:layout_marginTop="3dp"
+		         android:layout_marginBottom="2dp"
+		         android:background="@color/gray"
+		         android:orientation="vertical"
+		         android:layout_width="match_parent"
+		         android:layout_height="wrap_content" >
+				<TextView
+				    android:layout_width="wrap_content"
+				    android:layout_height="wrap_content"
+				    android:text="内网IP地址/域名" />	
+				<EditText 
+				    android:id="@+id/settings_edtx_lan_ip"
 				    android:layout_width="match_parent" 
 				    android:layout_height="wrap_content"
 				    android:digits="1234567890.abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ-" />

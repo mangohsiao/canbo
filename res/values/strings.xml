@@ -44,4 +44,9 @@
     <string name="login_network_request_error">未能连接上服务器</string>
     <string name="login_input_null">请填写完整信息</string>
     
+    <!-- 常用 -->
+    <string name="global_OK">确定</string>
+    <string name="global_CANCEL">取消</string>
+    <string name="global_NEXT">下一步</string>
+    
 </resources>
