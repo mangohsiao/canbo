@@ -27,32 +27,16 @@ import com.emos.canbo.common.BaseActivity;
 public class SecurityAddDeployActivity extends BaseActivity implements OnClickListener{
 
 	//////////* view */
-	/**
-	 */
 	Button securityadd_btn_cancel = null;
-	/**
-	 */
 	Button securityadd_btn_ok = null;
-	/**
-	 */
 	ListView securityadd_listview = null;
 	
 	//////////* data */
-	/**
-	 */
 	List<Device> undeployedList = null;
-	/**
-	 */
 	List<Device> deployedList = null;
-	/**
-	 */
 	SecurityAddAdapter adapter = null;
-	/**
-	 */
 	boolean checkArray[] = null;
 
-	/**
-	 */
 	SharedPreferences prefSensorUsed = null;
 	
 	@Override

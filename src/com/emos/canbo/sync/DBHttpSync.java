@@ -42,11 +42,14 @@ public class DBHttpSync implements Runnable{
 	public final static int WHAT_CONNECT_FAILED = 1103;
 	public final static int WHAT_PARSING_FAILED = 1104;
 	public final static int WHAT_VERIFY_FAILED = 1105;
+	public final static int WHAT_STOP_SYNC = 1106;
+	
 
 	public String REQ_URL = "http://125.216.243.235:8080/CanboServer/dbcheck";
 	private String file_name = "mango.png";
 	private File db_file;
 	
+	private boolean stopFlag = false;
 	Handler handler;
 	Context context;
 	public DBHttpSync(Handler handler, Context context) {
@@ -78,6 +81,9 @@ public class DBHttpSync implements Runnable{
 			reqJson.put("TYPE", TYPE_CHECK);
 			reqJson.put("nowMD5", nowMD5);
 			String resStr = HttpPostUtils.doPostJson(reqJson, REQ_URL);
+			if(resStr.equals("")){
+				throw new IOException("HTTP request Failed");
+			}
 			JSONObject resJson = new JSONObject(resStr);
 			int RES = resJson.getInt("RES");
 			switch (RES) {
@@ -96,6 +102,7 @@ public class DBHttpSync implements Runnable{
 			}			
 		} catch (JSONException e) {
 			e.printStackTrace();
+			handler.sendEmptyMessage(WHAT_PARSING_FAILED);
 		} catch (SocketException e) {
 			handler.sendEmptyMessage(WHAT_NETWORK_ERR);
 			e.printStackTrace();
@@ -127,7 +134,7 @@ public class DBHttpSync implements Runnable{
 			handler.sendEmptyMessage(WHAT_START_DOWNLOAD);
 			byte[] buf = new byte[4096];
 			int readLength, progress = -1, count=0;
-			while((readLength = in.read(buf)) != -1){
+			while(!stopFlag && (readLength = in.read(buf)) != -1){
 				out.write(buf, 0, readLength);
 				count += readLength;
 				progress = (int)((double)count/sIZE *100);
@@ -138,6 +145,12 @@ public class DBHttpSync implements Runnable{
 				msg.setData(bd);
 				handler.sendMessage(msg);
 //				System.out.println("progress: " + progress);
+			}
+			if(stopFlag){
+				if(db_file2.exists())
+					db_file2.delete();
+				handler.sendEmptyMessage(WHAT_STOP_SYNC);
+				return;
 			}
 			
 			/* check MD5 */

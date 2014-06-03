@@ -20,6 +20,7 @@ import com.hikvision.netsdk.PTZCommand;
 import com.hikvision.netsdk.PTZPresetCmd;
 import com.hikvision.netsdk.RealPlayCallBack;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
@@ -465,7 +466,8 @@ public class MonitorSurfaceView extends SurfaceView implements SurfaceHolder.Cal
 		return;
 	}
 	
-	AlertDialog mAlertDialog = null;
+	AlertDialog mAlertDialog = null;	
+	@SuppressLint("HandlerLeak")
 	private Handler mHandler = new Handler(){
 
 		@Override

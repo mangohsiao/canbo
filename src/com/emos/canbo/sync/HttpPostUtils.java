@@ -10,14 +10,15 @@ import java.net.SocketException;
 import java.net.URL;
 import org.json.JSONObject;
 
+import android.util.Log;
+
 public class HttpPostUtils {
 
 	public static final int TIMEOUT = 8000; // time out milsec
 
 	public static String doPostJson(JSONObject jsobj, String urlStr) throws SocketException, IOException {
 		// 新建HttpPost对象
-		try {
-			
+			System.out.println("url: " + urlStr);
 			URL url = new URL(urlStr);
 			HttpURLConnection mConnection = (HttpURLConnection)url.openConnection();
 			mConnection.setConnectTimeout(TIMEOUT);
@@ -32,7 +33,7 @@ public class HttpPostUtils {
 			reqOS.close();
 			
 			int code = mConnection.getResponseCode();
-			System.out.println("code = " + code);
+//			System.out.println("code = " + code);
 			String sCurrentLine = "";
 			String sTotalStr = "";
 			if(code == 200){
@@ -44,20 +45,11 @@ public class HttpPostUtils {
 				}
 				is.close();
 			}else{
-				System.out.println("request err. ");
+				Log.v("mango", "return code = " + code);
+				throw new IOException("HTTP post Failed.");
 			}
 			System.out.println("response = " + sTotalStr);
 			
 			return sTotalStr;
-			
-		} catch (SocketException e){
-//			System.out.println("SocketException");
-//			e.printStackTrace();
-			throw e;
-		} catch (IOException e) {
-//			System.out.println("IOException");
-//			e.printStackTrace();
-			throw e;
-		}
 	}
 }

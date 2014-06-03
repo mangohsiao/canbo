@@ -47,36 +47,18 @@ public class OptListActivity extends LinkedActivity {
 	 * 发送指令需要用到,传入的
 	 */
 	String d_mac;	//设备mac地址
-	/**
-	 */
 	int r_id;	//room的id
-	/**
-	 */
 	int d_serialport;	//device串口号
 	
-	/**
-	 */
 	String r_name;	//房间名字
-	/**
-	 */
 	String op_devtype;	//dev类型代码
 	
-	/**
-	 */
 	List<Map<String,String>> opt_data_list;	//用于存储显示数据
-	/**
-	 */
 	ListView lstv_optlist;
 //	TextView txv_optlist;
-	/**
-	 */
 	MyOptListAdatper myOptListAdatper;
 	//head
-	/**
-	 */
 	TextView txv_head_med;
-	/**
-	 */
 	TextView txv_head_small;
 	
 	
@@ -163,7 +145,7 @@ public class OptListActivity extends LinkedActivity {
 					map.put("op_desc", c.getString(c.getColumnIndex("op_desc")));	
 					opt_data_list.add(map);
 				}
-							
+				
 				c.close();
 			} catch (Exception e) {
 				// 

@@ -29,100 +29,42 @@ public class MonitorActivity extends ExActivity implements View.OnTouchListener,
 
 	private final static String TAG = "MonitorActivity";
 
-	/**
-	 */
 	private boolean isFullScreen = false;
-	/**
-	 */
 	private boolean isShowTools = false;
 	
-	/**
-	 */
 	CameraInfo camInfo = null;
 	
-	/**
-	 */
 	LinearLayout linearlayout_bottom_direction = null;
-	/**
-	 */
 	LinearLayout linearlayout_bottom_zoom = null;
-	/**
-	 */
 	LinearLayout linearlayout_bottom_focus = null;
-	/**
-	 */
 	LinearLayout linearlayout_bottom_vision_node = null;
 	
-	/**
-	 */
 	RadioGroup radioGroup_action_change = null;
 	
-	/**
-	 */
 	TextView txv_head_med = null;
 	
-	/**
-	 */
 	Button btn_cam_up = null;
-	/**
-	 */
 	Button btn_cam_down = null;
-	/**
-	 */
 	Button btn_cam_left = null;
-	/**
-	 */
 	Button btn_cam_right = null;
-	/**
-	 */
 	Button btn_cam_zoom_in = null;
-	/**
-	 */
 	Button btn_cam_zoom_out = null;
-	/**
-	 */
 	Button btn_cam_focus_near = null;
-	/**
-	 */
 	Button btn_cam_focus_far = null;
 
-	/**
-	 */
 	Button btn_cam_vision_node_choose = null;
-	/**
-	 */
 	Button btn_cam_vision_node_manage = null;	
 
-	/**
-	 */
 	Button monitor_btn_full_screen = null;
-	/**
-	 */
 	LinearLayout monitor_line_bottom = null;
-	/**
-	 */
 	RelativeLayout monitor_line_head_cell = null;
-	/**
-	 */
 	LinearLayout monitor_line_holder = null;
-	/**
-	 */
 	RelativeLayout monitor_rltv_middle = null;
-	/**
-	 */
 	RelativeLayout monitor_rltv_exit_fullscreen = null;
-	/**
-	 */
 	Button monitor_btn_exit_fullscreen = null;
 	
-	/**
-	 */
 	MonitorSurfaceView monitorSurfaceView = null;
-	/**
-	 */
 	HCNetSDK hcNetSDK = null;
-	/**
-	 */
 	MonitorInfo monitorInfo = null;
 	
 	@Override

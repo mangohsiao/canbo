@@ -44,57 +44,27 @@ import android.widget.ToggleButton;
 public class SecurityActivity2 extends Activity implements View.OnClickListener{
 
 	///////****** Serviece **********/
-	/**
-	 */
 	LocalService mService = null;
-	/**
-	 */
 	boolean isStart = false;
-	/**
-	 */
 	boolean isBind = false;
-	/**
-	 */
 	Intent servIntent = null;
 
 	///////****** ListView **********/
-	/**
-	 */
 	ListView listview = null;
-	/**
-	 */
 	List<Device> deployedList = null;
-	/**
-	 */
 	List<Device> undeployedList = null;
-	/**
-	 */
 	MyAdapter adapter = null;
 
 	///////****** SharedPreferences **********/
-	/**
-	 */
 	SharedPreferences prefSensorUsed = null;
 
-	/**
-	 */
 	Button security_btn_deploy = null;
-	/**
-	 */
 	Button security_btn_undeploy = null;
-	/**
-	 */
 	Button security_btn_add_deploy = null;
-	/**
-	 */
 	Button security_btn_remove = null;
 
 	///////****** running values **********/
-	/**
-	 */
 	boolean checkArray[] = null;
-	/**
-	 */
 	int preDevicesCount = 0;
 	
 	@Override
@@ -193,8 +163,8 @@ public class SecurityActivity2 extends Activity implements View.OnClickListener{
 					device.d_mac = c.getString(c.getColumnIndex("d_mac"));
 					device.d_devtype = c.getString(c.getColumnIndex("d_devtype"));
 					device.d_name = c.getString(c.getColumnIndex("d_name"));
-					device.d_no = c.getInt(c.getColumnIndex("d_no"));
-					device.r_id = c.getInt(c.getColumnIndex("r_id"));
+//					device.d_no = c.getInt(c.getColumnIndex("d_no"));
+//					device.r_id = c.getInt(c.getColumnIndex("r_id"));
 					device.d_serialport = c.getInt(c.getColumnIndex("d_serialport"));
 					if(prefSensorUsed.getBoolean(device.d_mac + device.d_devtype + device.d_no, false)){
 						//saved

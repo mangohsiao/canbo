@@ -33,42 +33,47 @@ import com.emos.canbo.sync.DBHttpSync;
 import com.emos.canbo.sync.MDBSyncClient;
 import com.emos.canbo.sync.MDBSyncMessage;
 
-public class LoginActivity extends BaseActivity implements OnClickListener,OnCheckedChangeListener{
-	
+public class LoginActivity extends BaseActivity implements OnClickListener,
+		OnCheckedChangeListener {
+
 	public static final int LOGIN_CHECK = 701;
 
 	protected static final int MENU_NETWORK_SETTING = Menu.FIRST;
 
 	Button login_btn_login = null;
-	Button login_btn_lan = null;	
-	
+	Button login_btn_lan = null;
+
 	EditText login_edtx_password = null;
 	EditText login_edtx_username = null;
 	CheckBox login_chbx_save_user = null;
 	CheckBox login_chbx_save_pswd = null;
-	
+
 	private LoadingDialog dialog = null;
 	private AlertDialog mAlertDialog = null;
-	
+
 	private SharedPreferences sharedPreferences = null;
-	
+
 	String username;
 	String password;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login);
-		
-		sharedPreferences = getSharedPreferences(CanboCommon.GlobalSettingsName, Context.MODE_PRIVATE);
-		
+
+		sharedPreferences = getSharedPreferences(
+				CanboCommon.GlobalSettingsName, Context.MODE_PRIVATE);
+
+		((MyApp) getApplicationContext())
+				.setLoginModeGLB(CanboCommon.LOGIN_MODE_LAN);
+
 		findView();
 		setListener();
 	}
 
 	private Boolean checkAndGetUser() {
-		if("".equals(login_edtx_username.getText().toString())
-				||"".equals(login_edtx_password.getText().toString()) ){
+		if ("".equals(login_edtx_username.getText().toString())
+				|| "".equals(login_edtx_password.getText().toString())) {
 			Bundle bd = new Bundle();
 			bd.putInt("status", LoginStatus.LOGIN_ERR_INPUT_NULL);
 			Message msg = new Message();
@@ -77,7 +82,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener,OnChe
 			handler.sendMessage(msg);
 			return false;
 		}
-		//GET USER
+		// GET USER
 		username = login_edtx_username.getText().toString();
 		password = login_edtx_password.getText().toString();
 		return true;
@@ -91,40 +96,43 @@ public class LoginActivity extends BaseActivity implements OnClickListener,OnChe
 	}
 
 	private void findView() {
-		login_btn_login = (Button)findViewById(R.id.login_btn_login);
-		login_btn_lan = (Button)findViewById(R.id.login_btn_lan);		
-		login_edtx_username = (EditText)findViewById(R.id.login_edtx_username);
-		login_edtx_password = (EditText)findViewById(R.id.login_edtx_password);
-		login_chbx_save_user = (CheckBox)findViewById(R.id.login_chbx_save_user);
-		login_chbx_save_pswd = (CheckBox)findViewById(R.id.login_chbx_save_pswd);
-		
-		//setting initial values
-		if(sharedPreferences.getBoolean(UserCommon.SHPF_LOGIN_SAVE_USER_CHECKED, false)){
-			//read username
-			login_edtx_username.setText(sharedPreferences.getString(UserCommon.SHPF_LOGIN_SAVE_USERNAME, ""));
+		login_btn_login = (Button) findViewById(R.id.login_btn_login);
+		login_btn_lan = (Button) findViewById(R.id.login_btn_lan);
+		login_edtx_username = (EditText) findViewById(R.id.login_edtx_username);
+		login_edtx_password = (EditText) findViewById(R.id.login_edtx_password);
+		login_chbx_save_user = (CheckBox) findViewById(R.id.login_chbx_save_user);
+		login_chbx_save_pswd = (CheckBox) findViewById(R.id.login_chbx_save_pswd);
+
+		// setting initial values
+		if (sharedPreferences.getBoolean(
+				UserCommon.SHPF_LOGIN_SAVE_USER_CHECKED, false)) {
+			// read username
+			login_edtx_username.setText(sharedPreferences.getString(
+					UserCommon.SHPF_LOGIN_SAVE_USERNAME, ""));
 			login_chbx_save_user.setChecked(true);
 		}
-		if(sharedPreferences.getBoolean(UserCommon.SHPF_LOGIN_SAVE_PSWD_CHECKED, false)){
-			login_edtx_password.setText(sharedPreferences.getString(UserCommon.SHPF_LOGIN_SAVE_PASSWORD, ""));
+		if (sharedPreferences.getBoolean(
+				UserCommon.SHPF_LOGIN_SAVE_PSWD_CHECKED, false)) {
+			login_edtx_password.setText(sharedPreferences.getString(
+					UserCommon.SHPF_LOGIN_SAVE_PASSWORD, ""));
 			login_chbx_save_pswd.setChecked(true);
 		}
 	}
 
-	
-	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
 		menu.add(0, MENU_NETWORK_SETTING, 0, "网络设置");
 		return true;
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		super.onOptionsItemSelected(item);
 		switch (item.getItemId()) {
 		case MENU_NETWORK_SETTING:
-			((MyApp)getApplicationContext()).setLoginModeGLB(CanboCommon.LOGIN_MODE_LAN);
+			((MyApp) getApplicationContext())
+					.setLoginModeGLB(CanboCommon.LOGIN_MODE_LAN);
 			Intent it = new Intent(this, SettingActivity2.class);
 			startActivity(it);
 			break;
@@ -154,203 +162,221 @@ public class LoginActivity extends BaseActivity implements OnClickListener,OnChe
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.login_btn_login:
-			if(false == checkAndGetUser()){
+			if (false == checkAndGetUser()) {
 				break;
 			}
-			
-			if(dialog==null){
-				dialog = new LoadingDialog(this, getResources().getString(R.string.login_doing));
+
+			if (dialog == null) {
+				dialog = new LoadingDialog(this, getResources().getString(
+						R.string.login_doing));
 			}
 
 			/* do something login */
 			LoginRunnable work = new LoginRunnable(handler, username, password);
 			new Thread(work).start();
-			
+
 			dialog.show();
 			break;
 
 		case R.id.login_btn_lan:
-			//set global
-			((MyApp)getApplicationContext()).setLoginModeGLB(CanboCommon.LOGIN_MODE_LAN);
-//			String url = "http://" + "125.216.243.235" + ":" + "8080" + "/CanboServer" + "/dbcheck";
+			// set global
+			((MyApp) getApplicationContext())
+					.setLoginModeGLB(CanboCommon.LOGIN_MODE_LAN);
+			/* 设置 IP */
+			((MyApp) getApplicationContext()).setConIp(sharedPreferences
+					.getString(CanboCommon.CONTROL_CONNECT_IP_NAME,
+							CanboCommon.CONTROL_CONNECT_IP));
+			// String url = "http://" + "125.216.243.235" + ":" + "8080" +
+			// "/CanboServer" + "/dbcheck";
 
 			/* TODO 检查WIFI连接，仅在WIFI连接下使用内网控制。 */
-			
+
 			syncDB();
 			break;
 		default:
 			break;
 		}
 	}
+
 	private void syncDB() {
-		if(dialog==null){
+		if (dialog == null) {
 			dialog = new LoadingDialog(this, "正在同步数据");
 		}
+		dialog.setCancelable(false);
 		dialog.show();
-		String ip = ((MyApp)getApplicationContext()).getConIp();
-		String port = ((MyApp)getApplicationContext()).getConPort();
-		String url = "http://" + ip + ":" + port + "/CanboServer" + CanboCommon.DB_SYNC_SERVER_URL;
+		String ip = ((MyApp) getApplicationContext()).getConIp();
+		String port = ((MyApp) getApplicationContext()).getConPort();
+		String url = "http://" + ip + ":" + port + "/huabo"
+				+ CanboCommon.DB_SYNC_SERVER_URL;
 		DBHttpSync.syncDB(handler, LoginActivity.this, "smart.db", url);
 	}
+
 	private Thread syncThread = null;
 	private ProgressDialog mProgressDialog = null;
-	
+
 	@SuppressLint("HandlerLeak")
-	private Handler handler = new Handler(){
+	private Handler handler = new Handler() {
 
 		@Override
 		public void handleMessage(Message msg) {
-			if(dialog!=null && dialog.isShowing()){
+			if (dialog != null && dialog.isShowing()) {
 				dialog.dismiss();
 				dialog = null;
 			}
-			
-			if(msg.what == MDBSyncMessage.WHAT_PROGRESS){
+
+			if (msg.what == MDBSyncMessage.WHAT_PROGRESS) {
 				int progress = msg.getData().getInt("progress");
-				if(null != mProgressDialog){
+				if (null != mProgressDialog) {
 					mProgressDialog.setProgress(progress);
-					if(progress == 100){
+					if (progress == 100) {
 						mProgressDialog.dismiss();
 						mProgressDialog = null;
 					}
 				}
 				return;
-			}else if(msg.what == MDBSyncMessage.WHAT_START_DOWNLOAD){
+			} else if (msg.what == MDBSyncMessage.WHAT_START_DOWNLOAD) {
 				Log.v("mango", "start download");
 				mProgressDialog = new ProgressDialog(LoginActivity.this);
 				mProgressDialog.setTitle("正在同步数据");
-				mProgressDialog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
+				mProgressDialog
+						.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
 				mProgressDialog.setCancelable(false);
-				mProgressDialog.setButton(ProgressDialog.BUTTON_NEGATIVE, "取消", new DialogInterface.OnClickListener() {
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						mProgressDialog.cancel();
-						//cancel MtcpClient.
-						if(syncThread != null){
-							try {
-								syncThread.stop();
-							} catch (Exception e) {
-								e.printStackTrace();
+				mProgressDialog.setButton(ProgressDialog.BUTTON_NEGATIVE, "取消",
+						new DialogInterface.OnClickListener() {
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								mProgressDialog.cancel();
+								// cancel MtcpClient.
+								if (syncThread != null) {
+									try {
+										syncThread.stop();
+									} catch (Exception e) {
+										e.printStackTrace();
+									}
+								}
 							}
-						}
-					}
-				});
+						});
 				mProgressDialog.show();
 				return;
-			}else if(msg.what == MDBSyncMessage.WHAT_NETWORK_ERR){
-				Toast.makeText(LoginActivity.this, "网络连接错误", Toast.LENGTH_LONG).show();
+			} else if (msg.what == DBHttpSync.WHAT_STOP_SYNC) {
+				Toast.makeText(LoginActivity.this, "已取消同步", Toast.LENGTH_LONG)
+						.show();
 				return;
-			}else if(msg.what == MDBSyncMessage.WHAT_NETWORK_ERR){
-				Toast.makeText(LoginActivity.this, "网络连接错误", Toast.LENGTH_LONG).show();
+			} else if (msg.what == MDBSyncMessage.WHAT_NETWORK_ERR
+					|| msg.what == DBHttpSync.WHAT_IO_ERR
+					|| msg.what == DBHttpSync.WHAT_PARSING_FAILED) {
+				Toast.makeText(LoginActivity.this, "同步失败", Toast.LENGTH_LONG)
+						.show();
 				return;
-/*			}else if(msg.what == DBHttpSync.WHAT_NO_NEED_SYNC){
-				AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-				builder.setTitle("数据同步");
-				builder.setMessage("已经是最新数据库");
-				builder.setNegativeButton("确认", new DialogInterface.OnClickListener() {
-					
-					@Override
-					public void onClick(DialogInterface dialog, int arg1) {
-						dialog.dismiss();
-					}
-				});
-				builder.show();
-				return;	*/
-			}else if(msg.what == DBHttpSync.WHAT_SYNC_OK || msg.what == DBHttpSync.WHAT_NO_NEED_SYNC){
-				
-				Intent it = new Intent(LoginActivity.this, MainMenuActivity.class);
+			} else if (msg.what == DBHttpSync.WHAT_SYNC_OK
+					|| msg.what == DBHttpSync.WHAT_NO_NEED_SYNC) {
+
+				Intent it = new Intent(LoginActivity.this,
+						MainMenuActivity.class);
 				startActivity(it);
 				LoginActivity.this.finish();
-				
-			}else if(msg.what == LOGIN_CHECK){
+
+			} else if (msg.what == LOGIN_CHECK) {
 				int status;
 				Bundle bd = msg.getData();
 				status = bd.getInt("status");
-				
+
 				String tips = "";
 				switch (status) {
-					/* login successfully */
-					case 100:
-						String ip = bd.getString("ip");
-						//set ip && username into SHPF
-						Editor editor = sharedPreferences.edit();
-						editor.putString(UserCommon.SHPF_LOGIN_SAVE_USERNAME, username);
-						editor.putString(UserCommon.SHPF_LOGIN_SAVE_PASSWORD, password);
-						editor.putString(CanboCommon.SHPF_WAN_CONNECT_IP, ip);
-						editor.commit();
-						((MyApp)getApplicationContext()).setLoginModeGLB(CanboCommon.LOGIN_MODE_WAN);
-						((MyApp)getApplicationContext()).setConIp(ip);
-						
-						//check db sync
-						syncDB();
-						
-//						Intent intent = new Intent(LoginActivity.this, MainMenuActivity.class);
-//						startActivity(intent);
-//						LoginActivity.this.finish();
-						return;
-						
+				/* login successfully */
+				case 100:
+					String ip = bd.getString("ip");
+					// set ip && username into SHPF
+					Editor editor = sharedPreferences.edit();
+					editor.putString(UserCommon.SHPF_LOGIN_SAVE_USERNAME,
+							username);
+					editor.putString(UserCommon.SHPF_LOGIN_SAVE_PASSWORD,
+							password);
+					editor.putString(CanboCommon.SHPF_WAN_CONNECT_IP, ip);
+					editor.commit();
+					((MyApp) getApplicationContext())
+							.setLoginModeGLB(CanboCommon.LOGIN_MODE_WAN);
+					((MyApp) getApplicationContext()).setConIp(ip);
+
+					// check db sync
+					syncDB();
+
+					// Intent intent = new Intent(LoginActivity.this,
+					// MainMenuActivity.class);
+					// startActivity(intent);
+					// LoginActivity.this.finish();
+					return;
+
 					/* user not exist */
-					case 101:					
-						tips += getResources().getString(R.string.login_user_not_exist);
-						break;
-						
-					/* password wrong */
-					case 102:					
-						tips += getResources().getString(R.string.login_pswd_wrong);
-						break;
-						
-					/* not running */
-					case 103:					
-						tips += getResources().getString(R.string.login_host_not_running);
-						break;
-						
-					/* to verify */
-					case 104:
-						tips += getResources().getString(R.string.login_to_verify);
-						break;
-						
-					/* http time out */
-					case 110:
-						tips += getResources().getString(R.string.login_http_timeout);
-						break;
-	
-					/* json parsing error */
-					case 111:
-						tips += getResources().getString(R.string.login_json_parsing_error);
-						break;
-	
-					/* network request error */
-					case 112:
-						tips += getResources().getString(R.string.login_network_request_error);
-						break;
-	
-					/* network request error */
-					case LoginStatus.LOGIN_ERR_INPUT_NULL:
-						tips += getResources().getString(R.string.login_input_null);
-						break;
-						
-					/* other errors */
-					default:
-						break;
+				case 101:
+					tips += getResources().getString(
+							R.string.login_user_not_exist);
+					break;
+
+				/* password wrong */
+				case 102:
+					tips += getResources().getString(R.string.login_pswd_wrong);
+					break;
+
+				/* not running */
+				case 103:
+					tips += getResources().getString(
+							R.string.login_host_not_running);
+					break;
+
+				/* to verify */
+				case 104:
+					tips += getResources().getString(R.string.login_to_verify);
+					break;
+
+				/* http time out */
+				case 110:
+					tips += getResources().getString(
+							R.string.login_http_timeout);
+					break;
+
+				/* json parsing error */
+				case 111:
+					tips += getResources().getString(
+							R.string.login_json_parsing_error);
+					break;
+
+				/* network request error */
+				case 112:
+					tips += getResources().getString(
+							R.string.login_network_request_error);
+					break;
+
+				/* network request error */
+				case LoginStatus.LOGIN_ERR_INPUT_NULL:
+					tips += getResources().getString(R.string.login_input_null);
+					break;
+
+				/* other errors */
+				default:
+					break;
 				}
 				showMyDialog(tips);
 			} // end of if(msg.what == LOGIN_CHECK)
 		}
-		
+
 	};
-	
-	void showMyDialog(String tips){
+
+	void showMyDialog(String tips) {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		mAlertDialog = builder.setTitle(R.string.tips)
+		mAlertDialog = builder
+				.setTitle(R.string.tips)
 				.setMessage(tips)
-				.setPositiveButton(R.string.dialog_yes, new DialogInterface.OnClickListener() {
-					
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						mAlertDialog.dismiss();
-					}
-				})
-				.create();
+				.setPositiveButton(R.string.dialog_yes,
+						new DialogInterface.OnClickListener() {
+
+							@Override
+							public void onClick(DialogInterface dialog,
+									int which) {
+								mAlertDialog.dismiss();
+							}
+						}).create();
 		mAlertDialog.show();
 	}
 
@@ -359,18 +385,30 @@ public class LoginActivity extends BaseActivity implements OnClickListener,OnChe
 		// TODO Auto-generated method stub
 		switch (buttonView.getId()) {
 		case R.id.login_chbx_save_user:
-			if(isChecked){
-				sharedPreferences.edit().putBoolean(UserCommon.SHPF_LOGIN_SAVE_USER_CHECKED, true).commit();
-			}else{
-				sharedPreferences.edit().putBoolean(UserCommon.SHPF_LOGIN_SAVE_USER_CHECKED, false).commit();
+			if (isChecked) {
+				sharedPreferences
+						.edit()
+						.putBoolean(UserCommon.SHPF_LOGIN_SAVE_USER_CHECKED,
+								true).commit();
+			} else {
+				sharedPreferences
+						.edit()
+						.putBoolean(UserCommon.SHPF_LOGIN_SAVE_USER_CHECKED,
+								false).commit();
 			}
 			break;
 
 		case R.id.login_chbx_save_pswd:
-			if(isChecked){
-				sharedPreferences.edit().putBoolean(UserCommon.SHPF_LOGIN_SAVE_PSWD_CHECKED, true).commit();
-			}else{
-				sharedPreferences.edit().putBoolean(UserCommon.SHPF_LOGIN_SAVE_PSWD_CHECKED, false).commit();
+			if (isChecked) {
+				sharedPreferences
+						.edit()
+						.putBoolean(UserCommon.SHPF_LOGIN_SAVE_PSWD_CHECKED,
+								true).commit();
+			} else {
+				sharedPreferences
+						.edit()
+						.putBoolean(UserCommon.SHPF_LOGIN_SAVE_PSWD_CHECKED,
+								false).commit();
 			}
 			break;
 

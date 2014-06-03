@@ -44,6 +44,7 @@ public class UpdateComponent {
 	public final static int MSG_DOWN_ERR = 109;
 	public final static int MSG_DOWN_CANCEL = 110;
 	public final static int MSG_INSTALL = 111;
+	public final static int MSG_ALREADY_DOWN = 112;
 
 	public final static String INDEX_VER_CODE = "ver_code";
 	public final static String INDEX_VER_NAME = "ver_name";
@@ -249,7 +250,7 @@ public class UpdateComponent {
 				show_msg.append("已是最新");
 				show_msg.append("\n版本：");
 				show_msg.append(ver_info.ver_name);
-				show_msg.append("\n发布日期：2013年11月08日");
+//				show_msg.append("\n发布日期：2013年11月08日");
 
 				/* show the info of version */
 				AlertDialog.Builder builder = new AlertDialog.Builder(context);
@@ -267,7 +268,7 @@ public class UpdateComponent {
 				show_update.append("\n新版本：\n");
 				show_update.append(ver_info.ver_name);
 				show_update.append("\n发布日期：\n");
-				show_update.append("2013-09-09\n");
+//				show_update.append("2013-09-09\n");
 				show_update.append(ver_info.update_desc);
 				AlertDialog.Builder dialog_update = new AlertDialog.Builder(
 						context);
@@ -306,6 +307,7 @@ public class UpdateComponent {
 				}
 				break;
 			case MSG_DOWN_FINISH:
+			case MSG_ALREADY_DOWN:
 				Log.v("mango", "MSG_DOWN_FINISH");
 				if (downProgressDialog != null) {
 					downProgressDialog.dismiss();
@@ -417,8 +419,7 @@ public class UpdateComponent {
 					String md5Str = MD5Util.getFileMD5(apkTemp);
 					if (md5Str.toUpperCase(Locale.US).equals(
 							ver_info.file_sum.toUpperCase(Locale.US))) {
-						Toast.makeText(context, "ALREADY_DOWN",
-								Toast.LENGTH_SHORT).show();
+						handler.sendEmptyMessage(MSG_ALREADY_DOWN);
 						return;
 					}
 					// if not the newest , then delete

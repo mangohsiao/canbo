@@ -51,6 +51,8 @@ public class SettingActivity2 extends BaseActivity implements OnClickListener{
 
 		if(((MyApp)getApplicationContext()).getLoginModeGLB()==CanboCommon.LOGIN_MODE_LAN){
 			settings_edtx_ip.setText(sharedPreferences.getString(CanboCommon.CONTROL_CONNECT_IP_NAME, CanboCommon.CONTROL_CONNECT_IP));
+			settings_edtx_ip.setEnabled(true);
+			settings_edtx_ip.setFocusable(true);
 		}else if(((MyApp)getApplicationContext()).getLoginModeGLB()==CanboCommon.LOGIN_MODE_WAN){
 			settings_edtx_ip.setText(sharedPreferences.getString(CanboCommon.SHPF_WAN_CONNECT_IP, CanboCommon.CONTROL_CONNECT_IP));
 			settings_edtx_ip.setEnabled(false);

@@ -86,8 +86,6 @@
 				    android:layout_height="wrap_content"
 				    android:text="IP地址/域名" />	
 				<EditText
-				    android:editable="false"
-				    android:focusable="false"
 				    android:id="@+id/settings_edtx_ip"
 				    android:layout_width="match_parent" 
 				    android:layout_height="wrap_content"
