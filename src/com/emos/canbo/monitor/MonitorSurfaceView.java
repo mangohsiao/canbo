@@ -369,6 +369,7 @@ public class MonitorSurfaceView extends SurfaceView implements SurfaceHolder.Cal
 		//ÏÔÊ¾loading 
 		if(mLoadingDialog == null){
 			mLoadingDialog = new LoadingDialog(mContext,"µÇÂ¼ÖÐ¡£¡£¡£");
+			mLoadingDialog.setCancelable(false);
 		}
 		mLoadingDialog.show();
 		mPlayThread = new PlayThread();
@@ -472,15 +473,17 @@ public class MonitorSurfaceView extends SurfaceView implements SurfaceHolder.Cal
 
 		@Override
 		public void handleMessage(Message msg) {
-			mLoadingDialog.dismiss();
-			mLoadingDialog = null;
+			if(mLoadingDialog != null ){
+				mLoadingDialog.dismiss();
+				mLoadingDialog = null;
+			}
 			
 			switch(msg.what){
 			case ERR_LOGIN_FAILED:
 				AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
 				mAlertDialog = builder.setTitle("Tips")
-						.setMessage("Login failed.")
-						.setPositiveButton("ok.", new DialogInterface.OnClickListener() {
+						.setMessage("µÇÂ¼Ê§°Ü.")
+						.setPositiveButton("·µ»Ø.", new DialogInterface.OnClickListener() {
 							@Override
 							public void onClick(DialogInterface dialog, int which) {
 								mAlertDialog.dismiss();

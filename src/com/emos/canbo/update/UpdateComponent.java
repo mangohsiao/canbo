@@ -380,9 +380,16 @@ public class UpdateComponent {
 					+ ConstValue.UPDATE_PORT + ConstValue.DOWN_URL
 					+ "?file_id=" + ver_info.file_id;
 			Log.v("mango", downUrlStr);
-			MDownRunnable runner = new MDownRunnable(downUrlStr);
-			Thread thread = new Thread(runner);
-			thread.start();
+			
+			/* USE DOWNLOAD MANAGER */
+			DownloadComponent mComponent = new DownloadComponent(context);
+			mComponent.setApkUrl(downUrlStr);
+			mComponent.down();
+			
+			/* USE THREAD */
+//			MDownRunnable runner = new MDownRunnable(downUrlStr);
+//			Thread thread = new Thread(runner);
+//			thread.start();
 		}
 
 	}

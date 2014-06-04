@@ -9,6 +9,8 @@
         android:id="@+id/setttings_line_head"
         android:gravity="center"
         android:layout_alignParentTop="true"
+	        android:focusable="true"
+	        android:focusableInTouchMode="true"
     	android:background="@drawable/head_bkground"
         android:layout_width="match_parent"
         android:layout_height="60dp" >

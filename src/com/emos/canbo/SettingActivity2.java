@@ -91,6 +91,8 @@ public class SettingActivity2 extends BaseActivity implements OnClickListener{
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+		
+		/* 保存 */
 		case R.id.setttings_btn_save:
 			Editor editor = sharedPreferences.edit();
 			String ip = settings_edtx_ip.getText().toString();
@@ -109,10 +111,13 @@ public class SettingActivity2 extends BaseActivity implements OnClickListener{
 			Toast.makeText(SettingActivity2.this, "修改成功", Toast.LENGTH_SHORT).show();
 			SettingActivity2.this.finish();
 			break;
+			
+		/* 取消 */
 		case R.id.setttings_btn_cancel:
 			SettingActivity2.this.finish();
 			break;
 
+		/* 程序更新  */
 		case R.id.setting_line_update:
 			UpdateComponent updateComponent = new UpdateComponent(this);
 			updateComponent.check_update_with_alert();

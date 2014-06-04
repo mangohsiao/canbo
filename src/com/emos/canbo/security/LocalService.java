@@ -112,14 +112,14 @@ public class LocalService extends Service {
 			Log.i("db", "db is null");
 		}else{
 			try {
-				Cursor c = db.rawQuery("SELECT * FROM Device WHERE `category`==1",null);
+				Cursor c = db.rawQuery("SELECT * FROM Sensor_Device; ",null);
 				while(c.moveToNext()){
 					Device device = new Device();
 					device.d_mac = c.getString(c.getColumnIndex("d_mac"));
 					device.d_devtype = c.getString(c.getColumnIndex("d_devtype"));
 					device.d_name = c.getString(c.getColumnIndex("d_name"));
-					device.d_no = c.getInt(c.getColumnIndex("d_no"));
-					device.r_id = c.getInt(c.getColumnIndex("r_id"));
+//					device.d_no = c.getInt(c.getColumnIndex("d_no"));
+//					device.r_id = c.getInt(c.getColumnIndex("r_id"));
 					device.d_serialport = c.getInt(c.getColumnIndex("d_serialport"));
 					if(true == prefSensorUsed.getBoolean(device.d_mac + device.d_devtype + device.d_no, false)){
 						devices.add(device);

@@ -47,7 +47,7 @@ public class SecurityTask2 extends TimerTask {
 			reqJson.put("TYPE", 11);
 			JSONArray array = new JSONArray();
 			for (Device device : data) {
-//				System.out.println(device.d_name + " - " + device.d_mac + " - " + device.d_devtype);
+				System.out.println(device.d_name + " - " + device.d_mac + " - " + device.d_devtype);
 				StringBuffer str = new StringBuffer();
 				str.append(device.d_mac.split("0x")[1]);
 				str.append(device.d_devtype.split("0x")[1]);
